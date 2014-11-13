@@ -4,10 +4,10 @@ return array(
 	'URL_MODEL'          => '2', //URL模式
 
 	'DB_TYPE' => 'mysqli',
-	'DB_HOST' => 'hushulin.mysql.rds.aliyuncs.com',
+	'DB_HOST' => getenv("MYSQL_HOST"),
 	'DB_NAME' => 'fanweuec',
-	'DB_USER' => 'eric',
-	'DB_PWD' => 'hushulin',
+	'DB_USER' => getenv("MYSQL_USER"),
+	'DB_PWD' => getenv("MYSQL_PWD"),
 	'DB_PORT' => '3306',
 	'DB_PREFIX' => 'app_',
 
@@ -25,7 +25,7 @@ return array(
 	'UPLOAD_HOST' => "http://115.29.108.94:8089",  //后面不要加/
 
 	'REDIS_HOST' => 'localhost', 
-	'IM_HOST' => 'localhost', 
+	'IM_HOST' => 'localhost',
 
 	'AES_KEY'=>'ddddd',
 	'PROJECT_ID_PRE' => 'P',
