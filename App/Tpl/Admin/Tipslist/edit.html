@@ -1,0 +1,149 @@
+<extend name="Public:base" />
+<block name="style"></block>
+<block name="script">
+	<script>
+		$(document).ready(function() {
+			$(".m-hd li").click(function(event) {
+				$(".tab").hide();
+				$("."+$(this).attr("rel")).show();
+				$(".m-hd li").removeClass('z-crt');
+				$(this).addClass('z-crt');
+			});
+		});
+	</script>
+</block>
+
+<block name="body">
+	<link rel="stylesheet" href="/Static/kindeditor/default/default.css">
+	<script charset="utf-8" src="/Static/kindeditor/kindeditor-min.js"></script>
+	<script charset="utf-8" src="/Static/kindeditor/zh_CN.js"></script>
+	<div id="main" class="g-main">
+		<table class="m-table"></table>
+		<div class="row m-title">
+			<h2>推荐列表管理 - 编辑推荐列表</h2>
+		</div>
+		<div class="row">
+<?php 
+$rurl = base64_decode($_GET["rurl"]);
+$rurl = empty($rurl)?U("/Admin/Tipslist"):$rurl;
+?>			<a class="u-btn" href="{$rurl}">返回列表</a>
+		</div>
+		<div class="row">
+			<div class="m-hd m-hd-bg">
+				<h2 class="u-tt"></h2>
+				<div class="more">
+					<!-- <a href="#">更多&raquo;</a> -->
+				</div>
+				<ul>
+					<li class="z-crt" rel="tab_1">
+						<a href="#">基本</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="m-form">
+				<form name="m-form" method="post" enctype="multipart/form-data">
+					<fieldset>
+						<div class="tab tab_1">
+							<div><input type="hidden" name="id" value="{$doc.id}"/></div>
+							<div class="formitm">
+									<label class="lab">推荐位名称:</label>
+									<div class="ipt">
+										<select class="u-select" name="position_id"><volist name = "field_position_id" id = "vo">
+<option value="{$key}" <?php if($key == $doc["position_id"]) echo 'selected="selected"'; ?> >{$vo}</option>
+</volist>
+</select>
+										<p></p>
+									</div>
+								</div>
+							<div class="formitm">
+									<label class="lab">车品名:</label>
+									<div class="ipt">
+										<select class="u-select" name="cargoods_id"><volist name = "field_cargoods_id" id = "vo">
+<option value="{$key}" <?php if($key == $doc["cargoods_id"]) echo 'selected="selected"'; ?> >{$vo}</option>
+</volist>
+</select>
+										<p></p>
+									</div>
+								</div>
+							<div class="formitm">
+									<label class="lab">用户:</label>
+									<div class="ipt">
+										<select class="u-select" name="user_id"><volist name = "field_user_id" id = "vo">
+<option value="{$key}" <?php if($key == $doc["user_id"]) echo 'selected="selected"'; ?> >{$vo}</option>
+</volist>
+</select>
+										<p>是否来自用户前台提交，如果是，显示用户，如果不是，显示0</p>
+									</div>
+								</div>
+							<div class="formitm">
+									<label class="lab">时间:</label>
+									<div class="ipt">
+										<input type="text" class="u-ipt time" name="time" value="{$doc.time|date="Y-m-d h:i",###}"/>
+										<p></p>
+									</div>
+								</div>
+							<div class="formitm">
+									<label class="lab">链接:</label>
+									<div class="ipt">
+										<input type="text" class="u-ipt" name="url" value="{$doc.url}"/>
+										<p></p>
+									</div>
+								</div>
+							<div class="formitm">
+									<label class="lab">内容:</label>
+									<div class="ipt">
+										<textarea class="u-textarea" name="content">{$doc.content}</textarea><script type="text/javascript">
+					var editor;
+					KindEditor.ready(function(K) {
+						editor = K.create('textarea[name="content"]', {
+							allowFileManager : false,
+							themesPath: K.basePath,
+							width: '100%',
+							height: '500px',
+							resizeType: 1,
+							pasteType : 2,
+							urlType : 'absolute',
+							//fileManagerJson : '/admin.php?m=Admin&c=Article&a=fileManagerJson',
+							uploadJson : '/Admin/Index/keupload'
+						});
+					});
+				</script>
+	
+										<p></p>
+									</div>
+								</div>
+							<div class="formitm">
+									<label class="lab">是否审核:</label>
+									<div class="ipt">
+										<volist name = "field_is_effect" id = "vo">
+<input type="radio" name="is_effect" value="{$key}" <?php if($key == $doc["is_effect"]) echo 'checked="checked"'; ?> >&nbsp;&nbsp;{$vo}&nbsp;&nbsp;&nbsp;&nbsp;
+</volist>
+										<p></p>
+									</div>
+								</div>
+						</div>
+						<div class="formitm formitm-1">
+							<button class="u-btn" type="submit">保存</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+	<link href="/Static/css/datetimepicker.css" rel="stylesheet" type="text/css">
+	<link href="/Static/css/dropdown.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="/Static/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="/Static/js/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.time').datetimepicker({
+				format: 'yyyy-mm-dd hh:ii',
+				language:"zh-CN",
+				minView:2,
+				autoclose:true
+			});
+		});		
+	</script>
+</block>

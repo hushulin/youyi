@@ -1,0 +1,80 @@
+<extend name="Public:base" />
+<block name="style"></block>
+<block name="script">
+	<script>
+		$(document).ready(function() {
+			$(".m-hd li").click(function(event) {
+				$(".tab").hide();
+				$("."+$(this).attr("rel")).show();
+				$(".m-hd li").removeClass('z-crt');
+				$(this).addClass('z-crt');
+			});
+		});
+	</script>
+</block>
+
+<block name="body">
+	<link rel="stylesheet" href="/Static/kindeditor/default/default.css">
+	<script charset="utf-8" src="/Static/kindeditor/kindeditor-min.js"></script>
+	<script charset="utf-8" src="/Static/kindeditor/zh_CN.js"></script>
+	<div id="main" class="g-main">
+		<table class="m-table"></table>
+		<div class="row m-title">
+			<h2>文章分类管理 - 编辑文章分类</h2>
+		</div>
+		<div class="row">
+<?php 
+$rurl = base64_decode($_GET["rurl"]);
+$rurl = empty($rurl)?U("/Admin/Article_cate"):$rurl;
+?>			<a class="u-btn" href="{$rurl}">返回列表</a>
+		</div>
+		<div class="row">
+			<div class="m-hd m-hd-bg">
+				<h2 class="u-tt"></h2>
+				<div class="more">
+					<!-- <a href="#">更多&raquo;</a> -->
+				</div>
+				<ul>
+					<li class="z-crt" rel="tab_1">
+						<a href="#">基本</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="m-form">
+				<form name="m-form" method="post" enctype="multipart/form-data">
+					<fieldset>
+						<div class="tab tab_1">
+							<div><input type="hidden" name="id" value="{$doc.id}"/></div>
+							<div class="formitm">
+									<label class="lab">分类名:</label>
+									<div class="ipt">
+										<input type="text" class="u-ipt" name="name" value="{$doc.name}"/>
+										<p></p>
+									</div>
+								</div>
+						</div>
+						<div class="formitm formitm-1">
+							<button class="u-btn" type="submit">保存</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+	<link href="/Static/css/datetimepicker.css" rel="stylesheet" type="text/css">
+	<link href="/Static/css/dropdown.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="/Static/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="/Static/js/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.time').datetimepicker({
+				format: 'yyyy-mm-dd hh:ii',
+				language:"zh-CN",
+				minView:2,
+				autoclose:true
+			});
+		});		
+	</script>
+</block>

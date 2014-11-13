@@ -1,0 +1,18 @@
+body{
+	font-size: 14px;
+	font-family: "微软雅黑", Helvetica, Tahoma, Arial, sans-serif;
+	line-height: 1.8em;
+	background: #f6f6f6;
+	background: url(../images/login_bg.jpg);
+}
+#main-content{
+	margin-top: 100px;
+}
+.login-body{
+	background: #fff;
+	width: 400px;
+	margin: 0 auto;
+	padding: 20px;
+	box-shadow: 1px 1px 3px #041A36;
+	border-radius: 18px;
+}

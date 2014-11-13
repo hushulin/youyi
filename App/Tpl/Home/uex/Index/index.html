@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$head_title|default="优异车品"}</title>
+<link href="__PUBLIC__/css/ycp.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<include file="Public:top" />
+
+	<div class="container">
+		<div class="menu_content">
+			<!-- 车品分类 -->
+			<div class="menu_content_left">
+				<div class="menu_cpfl_title">车品分类</div>
+				<div class="menu_cpfl_lb">
+					<ul class="menucpfl_lb_ul">
+						<volist name="cate" id="vo">
+							<li><a href="{:U('lists',array('cate_id'=>$vo['id']));}" style="display:inline-block;width:50px;">{$vo.title}</a></li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+			<!-- 车品分类结束 -->
+			<div class="menu_content_right">
+				<!-- 导航 -->
+				<div class="menu_title">
+					<ul class="top_right_ul menu_title_ul">
+						<volist name="nav" id="vo">
+							<li><a href="{$vo.url}">{$vo.name}</a></li>
+						</volist>
+					</ul>
+				</div>
+				<!-- 导航结束 -->
+				<div class="menu_title_bottom">
+					<!-- 首页大广告 -->
+					<div class="menu_bottom_left">
+					<a href="{$adv_big.url}"><img src="{$adv_big.img}?h=196&w=502" /></a> 
+					</div>
+					<!-- 首页大广告结束 -->
+					<div class="menu_bottom_right">
+						<div class="menu_zc_top">
+							<div class="menu_zc_img" style="height:40px;"><img src="__PUBLIC__/image/zc_tx.png?h=50&w=50" style="width:50px;height:50px;"/><span style="height:50px;margin-top:0">嘿，欢迎光临优异车品，</br>
+                                          	<a href="{:C('UEC_HOST');}/index.php?ctl=user&act=login">马上登录</a>，开启轻松车生活把！</span></div>
+							<div class="menu_zclb_cotent">
+								<ul>
+								<li  style="margin-left:0"><a href="{:C('UEC_HOST');}/index.php?ctl=user&act=register">注册</a></li>
+								<li class="jfth_bc"><a href="{:C('UEC_HOST');}/index.php?ctl=uc_money">积分兑换</a></li>
+								</ul>
+							</div>
+						</div>
+						{:W('Article',array('count'=>3));}
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+<!--可能你会感兴趣-->
+	<div class="container">
+		<div class="container_left">
+			<div class="interest">
+				<div class="interest_title">
+				<h1>可能你会感兴趣...</h1>
+				
+				<!-- <ul class="interest_title2">
+					<li class="libghsh"><a href="#">新蒙迪欧试用</a></li>
+					<li><a href="#">天蝎男可能喜欢 </a> </li>
+					<li><a href="#">新蒙迪欧试用</a></li>
+				</ul> -->
+				</div>
+			<div class="interest_content">
+				<ul>
+					<volist name="chepin_xq" id="vo">
+						<a href="{:U('detail',array('id'=>$vo['id']));}"><li <?php if ($key == 3): ?>
+								class="interest_content_li4"
+							<?php endif; ?>>
+								<div class="interest_content_img">
+									<img src="{$vo.img}?w=166&h=120" style="width:166px;height:120px;"/>
+								</div>	
+								<div class="interest_content_font">
+									<p><span>{$vo.type_name}</span> {$vo.title}</p> 
+									<p class="numb float">￥{$vo.price}</p>
+									<p  class="numb"><em class="em_color">{$vo.good_number}</em>人觉得值</p>
+								</div>
+							</li></a>
+					</volist>
+				</ul>
+			</div>
+
+		<div class="activity">
+			<div class="activity_title">
+				<h1>本地活动</h1>
+			</div>
+			<div class="activity_content">
+				<div class="activity_left">
+					<ul>
+						<volist name="chepin_active1" id="vo">
+							<li><img src="{$vo.img}?w=240&h=160" style="width:240px;height:160px;" />
+								<div class="activity_title2">
+									<div class="activity_title2_left">
+									<span><a href="{:U('detail',array('id'=>$vo['id']));}">{$vo.title}</a></span><em class="em_color2">￥{$vo.price}</em>
+									</div>
+									<div class="activity_title2_right">
+									<a href="{:U('detail',array('id'=>$vo['id']));}"><img src="__PUBLIC__/image/active_tb.png" border="0" /></a> </div>
+								</div>
+								<div class="activity_title3">{$vo.type_name}</div>
+							</li>
+						</volist>
+					</ul>
+				</div>
+				<div class="activity_mid">
+					<ul>
+						<volist name="chepin_active2" id="vo">
+							<li>
+							<div class="activity_mid_img">
+							<img src="{$vo.img}?w=100&h=100" style="width:100px;height:100px;" />
+							</div>
+							<div class="activity_midimg_contet">
+								<p class="activity_midimg_titlered"><a href="{:U('detail',array('id'=>$vo['id']));}">{$vo.title}</a></p>
+								<p class="activity_midimg_comming">来自：{$vo.urlstring|default="本站数据"}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+								<p class="activity_numb"><em class="em_color">{$vo.good_number}人</em>觉得值 <em class="em_color"> {$vo.collection_number}人</em>已收藏</p>
+								<P class="activity_gosee"><a href="{:U('detail',array('id'=>$vo['id']));}">去看看</a></P>
+							</div>
+						</li>
+						</volist>
+					</ul>
+				</div>
+				<div class="activity_right">
+					<ul>
+						<li><a href="#"><img src="__PUBLIC__/image/pinpailogo.png" border="0" /></a></li>
+						<li><a href="#"><img src="__PUBLIC__/image/pinpailogo.png" border="0" /></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+<!--爱车中心-->
+	<div class="lovecar">
+		<div class="interest_title">
+					<h1>爱车中心</h1>
+					</div>
+					<div class="interest_content">
+				<ul>
+					<volist name="chepin_aiche" id="vo">
+						<li <?php if ($key == 3): ?>
+							 class="interest_content_li4"
+						<?php endif; ?>>
+							<div class="interest_content_img love_car_img">
+								<img src="{$vo.img}" style="width:166px;height:201px;" />
+							</div>	
+							<div class="interest_content_font hight">
+								<p><a href="{:U('detail',array('id'=>$vo['id']));}">{$vo.title|dsubstr=34}</a></p> 
+								<p>{$vo.content|dsubstr=44}</p>
+								<p class="numb float">￥{$vo.price} <span class="remove">￥<?php echo $vo['price']*1.4;?></span></p>
+								<p class="numb love_car_yuding"><a href="{:U('detail',array('id'=>$vo['id']));}">预定</a></p>
+								<p class="numb love_car_nubmr"><em class="em_color">{$vo.good_number}</em>人觉得值</p>
+							</div>
+						</li>
+					</volist>
+				</ul>
+			</div>
+
+<!--产品logo-->
+	<div class="product_logo" style="height:0px;">
+		<!-- <ul>
+			<li><a href="#"><img src="__PUBLIC__/image/product.png" border="0" /></a></li>
+			<li><a href="#"><img src="__PUBLIC__/image/product.png" border="0" /></a></li>
+			<li><a href="#"><img src="__PUBLIC__/image/product.png" border="0" /></a></li>
+			<li><a href="#"><img src="__PUBLIC__/image/product.png" border="0" /></a></li>
+			<li><a href="#"><img src="__PUBLIC__/image/product.png" border="0" /></a></li>
+		</ul> -->
+	</div>
+	<!-- 广告 -->
+	<div class="mid_banner"	>
+		<a href="{$adv_banner1.url}"><img src="{$adv_banner1.img}" width="722" height="115" /></a>
+	</div>
+	<!-- 广告 -->
+			
+<!--产品推荐-->	
+		<div class="Product">
+				<div class="interest_title">
+					<h1>车品推荐</h1>
+					<ul class="interest_title2 width300">
+						<li><a href="#">电器·导航</a></li>
+						<li><a href="#">保养·机油  </a> </li>
+						<li><a href="#"> 改装·轮胎</a></li>
+					</ul>
+					<div class="interest_title3">
+						热门：<a href="#">雪莱特</a> <a href="#">灰壳</a> <a href="#">美孚1号</a> <a href="#">全合成</a>
+					</div>
+					<div class="interest_title3_more">更多...</div>
+				</div>
+				<div class="Product_content">
+					<div class="Product_content_left">
+						<div class="Product_content_leftimg">
+							<img src="__PUBLIC__/image/recommended_img.png" width="178" height="206" />
+							<!-- <span><a href="#">【活动】〖广州〗好快省华南大区店庆酬宾！</a></span> -->
+						</div>
+					<div class="Product_content2">
+						<div class="activity_mid margin0">
+							<ul>
+							<li class="padding-bottom10px">
+								<div class="activity_mid_img width64">
+								<img src="__PUBLIC__/image/active_img_mid.png">
+								</div>
+								<div class="activity_midimg_contet width104">
+									<p class="activity_midimg_titlered"><a href="#">澳马脚垫大酬宾！仅299元，即可获得原价201元的全套加厚环保脚垫！</a></p>
+									<p class="activity_numb top0"><span class="em_color">￥199.00</span><span class="em_color"> 41人</			                               span><em class="color_ccc">觉得值</em></p>
+								</div>
+							</li>
+						<!-- 
+							<li class="hight25"><a href="#">广播：行车必备品轮胎充气泵</a> </li>
+						
+							<li><a href="#">广播：行车必备品轮胎充气泵</a> </li>
+						
+							<li><a href="#">广播：行车必备品轮胎充气泵</a> </li>
+						 -->
+							<li class="padding-bottom10px padding-top30px">
+								<div class="activity_mid_img width64 width80">
+								<img src="__PUBLIC__/image/active_img_mid.png">
+								</div>
+								<div class="activity_midimg_contet width104 width88">
+									<h1>格道车品&nbsp;</h1>
+									<p class="gdzp_titile"><img src="__PUBLIC__/image/jia.png" /></p>
+									<p class="activity_midimg_titlered"><a href="#">主营PAPAGO、博世、雪莱特...</a></p>
+									<p class="activity_numb top0  store"><a href="#">进入店铺</a></p>
+								</div>
+							</li>
+					</ul>
+				</div>
+					</div>
+
+					</div>
+									
+				<div class="Product_content_right">
+					<div class="activity_left width256">
+					<ul>
+						<volist name="chepin_tj" id="vo">
+							<li class="imgwidth <?php if ($key%2 == 0): ?>
+								margin-right22
+							<?php endif; ?>"><img src="{$vo.img}" style="width:256px;height:240px;">
+								<div class="activity_title2 width236">
+									<div class="activity_title2_left">
+									<span><a href="{:U('detail',array('id'=>$vo['id']));}">{$vo.title}</a></span>
+									<span class="moni"><strong>￥{$vo.price}</strong></span>
+									<span class="moni"><em>{$vo.good_number}人</em>觉得值</span>
+									</div>
+									<div class="activity_title2_right">
+									<a href="{:U('detail',array('id'=>$vo['id']));}"><img src="__PUBLIC__/image/active_tb.png" border="0"  style="width:38px; height:36px;"></a> </div>
+								</div>
+							</li>
+						</volist>
+					
+					</ul>
+				</div>	
+				</div>
+				
+								
+				</div>
+				
+			
+<!--大家正在问-->			
+			<div class="asking">
+				<div class="interest_title">
+					<h1>大家正在问</h1>
+					<div class="interest_title3_more">更多...</div>
+				</div>
+                  <div class="asking_content">
+			
+						<div class="activity_mid margin0 width351 asking_margin_right20">
+							<ul class="asking_list_style">
+							<li class="padding-bottom10px">
+								<div class="activity_mid_img width64 width122">
+								<img src="__PUBLIC__/image/active_img_mid.png">
+								</div>
+								<div class="activity_midimg_contet width104 width214">
+									<h1><a href="#">东风风神A60仪表怎么看不见水温表？</a></h1>
+									<p class="activity_numb top0 widthh1">风神A60没有真正的水温表，只有水温过低或过高的提示，即码表上冷启动...</p>
+								</div>
+							</li>
+						
+							<li class="hight25"><a href="#">广播：行车必备品轮胎充气泵</a> </li>
+						
+							<li><a href="#">广播：行车必备品轮胎充气泵</a> </li>
+						
+							<li><a href="#">广播：行车必备品轮胎充气泵</a> </li>
+						
+					</ul>
+				</div>
+				
+						<div class="activity_mid margin0 width351">
+							<ul class="asking_list_style">
+							<li class="padding-bottom10px">
+								<div class="activity_mid_img width64 width122">
+								<img src="__PUBLIC__/image/active_img_mid.png">
+								</div>
+								<div class="activity_midimg_contet width104 width214">
+									<h1><a href="#">东风风神A60仪表怎么看不见水温表？</a></h1>
+									<p class="activity_numb top0 widthh1">风神A60没有真正的水温表，只有水温过低或过高的提示，即码表上冷启动...</p>
+								</div>
+							</li>
+						
+							<li class="hight25"><a href="#">广播：行车必备品轮胎充气泵</a> </li>
+						
+							<li><a href="#">广播：行车必备品轮胎充气泵</a> </li>
+						
+							<li><a href="#">广播：行车必备品轮胎充气泵</a> </li>
+						
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+
+
+	<!-- 广告 -->
+	<div class="mid_banner"	>
+		<a href="{$adv_banner2.url}"><img src="{$adv_banner2.img}" border="0" width="742" height="115" /></a>
+	</div>
+	<!-- 广告 -->
+
+
+<!--市场知识-->
+		<div class="knowledge">
+			<div class="interest_title">
+					<h1>汽车后市场的那点知识</h1>
+			</div>
+			<div class="knowledge_content">
+				<div class="knowledge_content_ first">
+					<ul class="knowledge_first_ul">
+						<li class="li_style1">
+						<span>保养维修</span>
+						<img src="__PUBLIC__/image/zhishi.png?w=351&h=184" />
+						</li>
+						<volist name="knowlege_desc" id="vo">
+							<li class="li_style"><a href="{:U('article',array('id'=>$vo['id']));}">{$vo.title}</a></li>
+						</volist>
+					</ul>
+						
+				</div>
+				
+				<div class="knowledge_content_ second">
+					<ul class="knowledge_first_ul">
+						<li class="li_style1">
+						<span>汽车美容</span>
+						<img src="__PUBLIC__/image/zhishi.png?w=351&h=184" />
+						</li>
+						<volist name="knowlege_asc" id="vo">
+							<li class="li_style"><a href="{:U('article',array('id'=>$vo['id']));}">{$vo.title}</a></li>
+						</volist>
+					</ul>
+						
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+				
+	</div>
+		
+		</div>	
+			
+
+
+
+</div>
+		
+		
+</div>
+
+<!--右边-->
+<div class="container_right">
+	<!-- {:W('Week');} -->
+{:W('Biz');}
+{:W('Act');}
+<!--右边banner-->
+<div class="right_banner">
+<a href="#"><img src="__PUBLIC__/image/right_banner.png" border="0" /></a> 
+</div>
+
+{:W('Sai');}
+{:W('Fx');}
+
+</div>
+
+</div>
+
+<include file="Public:foot" />
+
+</body>
+</html>

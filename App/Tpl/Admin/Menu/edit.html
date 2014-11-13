@@ -1,0 +1,119 @@
+<extend name="Public:base" />
+<block name="script">
+	<script>
+		$(document).ready(function() {
+			$(".m-hd li").click(function(event) {
+				$(".tab").hide();
+				$("."+$(this).attr("rel")).show();
+				$(".m-hd li").removeClass('z-crt');
+				$(this).addClass('z-crt');
+			});
+		});
+	</script>
+</block>
+<block name="body">
+	<div id="main" class="g-main">
+		<table class="m-table"></table>
+		<div class="row m-title">
+			<h2>菜单管理 - 编辑菜单</h2>
+		</div>
+		<div class="row">
+			<a class="u-btn" href="{:U('/Admin/Menu')}">返回列表</a>
+		</div>
+		<div class="row">
+			<div class="m-hd m-hd-bg">
+				<h2 class="u-tt"></h2>
+				<div class="more">
+					<!-- <a href="#">更多&raquo;</a> -->
+				</div>
+				<ul>
+					<li class="z-crt" rel="tab_1">
+						<a href="#">基本</a>
+					</li>
+					<li rel="tab_2">
+						<a href="#">扩展</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="m-form">
+				<form name="m-form" action="__SELF__" method="post">
+					<fieldset>
+						<div class="tab tab_1">
+							<div><input type="hidden" name="id" value="{$doc.id}"/></div>
+							<div class="formitm">
+								<label class="lab">标题:</label>
+								<div class="ipt">
+									<input type="text" class="u-ipt" name="title" value="{$doc.title}"/>
+									<p>用于后台显示的配置标题</p>
+								</div>
+							</div>
+							<div class="formitm">
+								<label class="lab">排序:</label>
+								<div class="ipt">
+									<input type="text" class="u-ipt" name="sort" value="{$doc.sort}"/>
+									<p>用于分组显示的顺序</p>
+								</div>
+							</div>
+							<div class="formitm">
+								<label class="lab">链接:</label>
+								<div class="ipt">
+									<input type="text" class="u-ipt" name="url" value="{$doc.url}"/>
+									<p>U函数解析的URL或者外链</p>
+								</div>
+							</div>
+							<div class="formitm">
+								<label class="lab">上级菜单:</label>
+								<div class="ipt">
+									<select class="u-select" name="pid"/>
+										<option value="0">顶级</option>
+										<volist name = "admin_menu_list" id = "vo">
+										<option value="{$vo.id}"<?php if($vo["id"] == $doc["pid"]) echo 'selected="selected"' ?>>{$vo.title}</option>
+										</volist>
+									</select>
+									<p>所属的上级菜单</p>
+								</div>
+							</div>
+						</div>
+						<div class="tab tab_2">
+							<div class="formitm">
+								<label class="lab">分组:</label>
+								<div class="ipt">
+									<input type="text" class="u-ipt" name="group" value="{$doc.group}"/>
+									<p>用于左侧分组二级菜单</p>
+								</div>
+							</div>
+							<div class="formitm">
+								<label class="lab">是否隐藏:</label>
+								<div class="ipt">
+									<input type="radio" name="hide" value="1" <?php if($doc["hide"] == 1) echo 'checked="checked"';?> /> 是
+									<input type="radio" name="hide" value="0" <?php if($doc["hide"] == 0) echo 'checked="checked"';?> /> 否
+									<p></p>
+								</div>
+							</div>
+							<div class="formitm">
+								<label class="lab">仅开发者模式:</label>
+								<div class="ipt">
+									<input type="radio" name="is_dev" value="1" <?php if($doc["is_dev"] == 1) echo 'checked="checked"';?> /> 是
+									<input type="radio" name="is_dev" value="0" <?php if($doc["is_dev"] == 0) echo 'checked="checked"';?> /> 否
+									<p></p>
+								</div>
+							</div>
+							<div class="formitm">
+								<label class="lab">说明:</label>
+								<div class="ipt">
+									<textarea class="u-textarea" name="tip">{$doc.tip}</textarea>
+									<p></p>
+								</div>
+							</div>
+						</div>
+						<div class="formitm formitm-1">
+							<button class="u-btn" type="submit">保存</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+</block>

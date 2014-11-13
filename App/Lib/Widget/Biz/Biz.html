@@ -1,0 +1,27 @@
+<!--明星商户-->
+<div class="star">
+	<div class="container_Listweek_title">
+		<h1>明星商户</h1>
+	</div>
+	<div class="star_content">
+		<ul class="star_content_ul">
+			<volist name="list" id="vo">
+				<li>
+					<a href="{:C('UEC_HOST');}/youhui.php?ctl=store&act=view&id={$vo.id}"><img src="{$vo.preview}" border="0" /></a>
+					<div class="star_content_title">
+						<h3><a href="{:C('UEC_HOST');}/youhui.php?ctl=store&act=view&id={$vo.id}">{$vo.name}</a></h3>
+						<div class="star_addr">
+							<ul class="star_addr_ul">
+								<li class="star_addr_bg">网</li>
+								<li class="star_addr_bg color1">售</li>
+								<li class="star_addr_bg color2">修</li>
+								<li class="star_addr_sy">{$vo.name_match_row}</li>
+							</ul>
+							<span class="star_enter" onclick="window.location.href='{:C('UEC_HOST');}/youhui.php?ctl=store&act=view&id={$vo.id}'">进入店铺</span>
+						</div>
+				      </div>
+				</li>
+			</volist>
+		</ul>
+	</div>
+</div>

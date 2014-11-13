@@ -1,0 +1,44 @@
+body{
+	background: #e8eaf0;
+	color: #333;
+	font-size: 14px;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.clear{
+	clear: both;
+}
+.main_box{
+	background: #fff;
+	padding: 10px;
+	box-shadow: 0px 1px 1px #9a9a9c;
+	border-radius: 8px;
+	margin: 5px;
+}
+.main_box h1{
+	font-size: 18px;
+	color: #333;
+	display: block;
+	margin-bottom: 10px;
+}
+.main_box .main_author{
+	color: #555555;
+	font-size: 12px;
+	line-height: 20px;
+	margin-bottom: 10px;
+}
+.main_box .main_content{
+	line-height: 1.8em;
+	font-size: 14px;
+}
+.main_box .main_content img{
+	width: 100%;
+	display: block;
+}
+.main_box .fav_btn{
+	float: right;
+}

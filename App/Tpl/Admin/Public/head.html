@@ -1,0 +1,19 @@
+<div class="g-header">
+	<div class="m-logo left">
+		<div style="text-align:center;line-height:60px;">
+			<img src="__PUBLIC__/image/ycp_logo.png?w=140&h=30" alt="" style="position:relative;top:10px;">
+		</div>
+	</div>
+	<div class="m-topmenu left">
+		<ul>
+			<volist name = "admin_top_menu" id = "vo">
+				<li><a href="{$vo.url|U}?currnav={$vo.id}" title="{$vo.title}" <?php if(session("currnav") == $vo["id"]) echo ' class="on" ' ?>>{$vo.title}</a></li>
+			</volist>
+		</ul>
+	</div>
+	<div class="m-topaction right">
+		<a href="{:U('/Admin/Public/logout')}" title="{$menu.title}">Admin</a> | 
+		<a href="{:U('/Admin/Public/logout')}" title="{$menu.title}">退出登录</a>
+	</div>
+</div>
+

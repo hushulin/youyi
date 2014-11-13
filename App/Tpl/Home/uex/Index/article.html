@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$head_title|default="优异车品"}-{$article.title}</title>
+<link href="__PUBLIC__/css/ycp.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/css/info.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<include file="Public:top" />
+<!--menu-->
+	<div class="container">
+		<div class="menu_content">
+			<div class="menu_content_right widthtz">
+				<div class="menu_title">
+					<div class="menu_cpfl_title czdq">优异文章</div>
+					<ul class="top_right_ul menu_title_ul czdq_783">
+						<volist name="nav" id="vo">
+							<li><a href="{$vo.url}">{$vo.name}</a></li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+<!--可能你会感兴趣-->
+	<div class="container">
+		<div class="container_left">
+			<div class="interest">
+				<!--热门活动-->
+				<div class="position">
+					<p>当前位置:
+						<a href="/">首页</a><i>></i>
+						<em class=    "wzxqc">{$article.title}</em>
+					</p>
+				</div>
+<!--文章详情-->			
+			<div class="article_details">
+				<div class="article_details_title">
+					<h1>{$article.title}</h1>
+					<p class="article_details__auth">点击数：{$article.click} &nbsp;&nbsp;&nbsp;&nbsp;分类： {$article.cate_id|getCate}</p>
+				</div>
+				
+				<div class="article_details_content">
+					<div style="padding:20px;">{$article.content}</div>
+					<div class="previous_posts">
+						<div class="previous_posts_left">
+							<p><em>上一篇</em> <a href="{:U('article',array('id'=>$article_prev['id']));}"> {$article_prev.title}</a></p>
+							<p><em>下一篇</em><a href="{:U('article',array('id'=>$article_next['id']));}"> {$article_next.title}</a></p>	
+						</div>
+						<div class="previous_posts_right">
+							<div class="activity_contet_tb padding_top0"> 
+								<!-- <a href="#" class="bk2 dlk">1 </a>						
+								<a href="#" class="bk3 dlk">1</a>						
+								<a href="#" class="bk4">分享+</a>  -->
+							</div>
+						</div>
+					</div>
+
+				</div>
+				
+						<div class="comments">
+							
+							<!-- UY BEGIN -->
+							<div id="uyan_frame"></div>
+							<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
+							<!-- UY END -->
+						</div>
+			</div>
+			
+		</div>
+	</div>
+
+<!--右边-->
+<!--每周榜单-->
+			<div class="container_right">
+<!--公告  入门-->
+<include file="Public:article" />
+				<div class="menu_bottom_right pat20">
+					
+					<div class="fact"><h3><a href="javascript:;">我要爆料</a></h3></div>
+				</div>			
+	
+<!--右边banner-->
+	<div class="right_banner">
+		<a href="#"><img src="__PUBLIC__/image/right_banner.png" border="0" /></a> 
+	</div>
+
+
+<!--浏览最多-->
+	{:W('Biz');}
+<!--晒心得-->
+	{:W('Sai');}
+</div>
+
+</div>
+	<include file="Public:foot" />
+</body>
+</html>

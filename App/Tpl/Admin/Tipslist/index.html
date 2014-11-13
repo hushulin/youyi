@@ -1,0 +1,72 @@
+<extend name="Public:base" />
+<block name="style"></block>
+<block name="script">
+	<script>
+		$(document).ready(function() {
+			$("#chkall").change(function() {
+				$obj = this;
+				$(".chkall").each(function(index, val) {
+					this.checked = $obj.checked;
+				});
+			});
+			$(".chkall").click(function(){
+				document.getElementById("chkall").checked = $(".chkall").length == $(".chkall:checked").length ? true : false;
+			});
+			$(".mdel").click(function(event) {
+				if($(".chkall:checked").length > 0){
+					$("#main_form").submit();
+				}else{
+					alert("请选择您要删除的数据！");
+				}
+			});
+		});
+	</script>
+</block>
+<block name="body">
+	<div id="main" class="g-main">
+		<div class="row m-title">
+			<h2>推荐列表管理</h2>
+		</div>
+		<div class="row">
+			<div class="left">
+				<a class="u-btn" href="{:U('/Admin/Tipslist/add')}?rurl={:base64_encode($rurl)}">新 增</a>
+			</div>
+			<div class="m-form right">
+							</div>
+			<div class="clear"></div>
+		</div>
+		<div class="row">
+			<form id="main_form" action="{:U('/Tipslist/maction')}" method="get">
+				<table class="m-table">
+					<thead>
+						<tr>
+							<th class="colid">编号</th>
+							<th>车品名</th>
+								<th class="cola">推荐位名称</th>
+								<th class="cola">用户名（空为平台发布）</th>
+								<th class="cola">是否审核</th>
+							<th class="colb">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<volist name = "list" id = "vo">
+						<tr>
+							<td>{$vo.id}</td>
+							<td><?php if(isset($field_cargoods_id)){echo $field_cargoods_id[$vo["cargoods_id"]];}else{echo $vo["cargoods_id"];}?></td><td><?php if(isset($field_position_id)){echo $field_position_id[$vo["position_id"]];}else{echo $vo["position_id"];}?></td><td><?php if(isset($field_user_id)){echo $field_user_id[$vo["user_id"]];}else{echo $vo["user_id"];}?></td><td><?php if(isset($field_is_effect)){echo $field_is_effect[$vo["is_effect"]];}else{echo $vo["is_effect"];}?></td>							
+							<td>
+								<a href="{:U('/Admin/Tipslist/edit/id/'.$vo['id'])}?rurl={:base64_encode($rurl)}" title="">编辑</a>
+								<a href="{:U('/Admin/Tipslist/del/id/'.$vo['id'])}?rurl={:base64_encode($rurl)}" title="">删除</a>
+							</td>
+						</tr>
+						</volist>
+					</tbody>
+				</table>
+			</form>
+		</div>
+		<div class="row">
+			<div class="m-page m-page-lt">
+				{$page}
+			</div>
+		</div>
+	</div>
+</block>

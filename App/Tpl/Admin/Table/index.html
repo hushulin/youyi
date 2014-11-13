@@ -1,0 +1,46 @@
+<extend name="Public:base" />
+
+<block name="body">
+	<div id="main" class="g-main">
+		<div class="row m-title">
+			<h2>模型管理</h2>
+		</div>
+		<div class="row">
+			<a class="u-btn" href="{:U('/Admin/Table/add')}">新 增</a>
+			<a class="u-btn" href="{:U('/Admin/Table/mgen')}" target="_blank">一键生成所有模型</a>
+		</div>
+		<div class="row">
+			<table class="m-table">
+				<thead>
+					<tr>
+						<th class="cola">编号</th>
+						<th>名称</th>
+						<th class="cola">标识</th>
+						<th class="cola">类型</th>
+						<th class="colb">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<volist name = "list" id = "vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td>{$vo.title}</td>
+						<td>{$vo.name}</td>
+						<td><?php if(isset($field_type)){echo $field_type[$vo["type"]];}else{echo $vo["type"];}?></td>
+						<td>
+							<a href="{:U('/Admin/Table/edit/id/'.$vo['id'])}" title="">编辑</a>
+							<a href="{:U('/Admin/Table/del/id/'.$vo['id'])}" title="">删除</a>
+							<a href="{:U('/Admin/Table/gen/id/'.$vo['id'])}" title="">生成</a>
+						</td>
+					</tr>
+					</volist>
+				</tbody>
+			</table>
+		</div>
+		<div class="row">
+			<div class="m-page m-page-lt">
+			    {$page}
+			</div>
+		</div>
+	</div>
+</block>

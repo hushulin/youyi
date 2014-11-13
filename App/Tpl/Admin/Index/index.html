@@ -1,0 +1,32 @@
+<extend name="Public:base" />
+<block name="script"></block>
+<block name="style">
+	<style type="text/css">
+	.index_info {
+		height: 40px;
+		width: 1000px;
+		line-height: 40px;
+		padding: 4px;
+		margin: 8px;
+		background-color: #eee;
+		font-size: 18px;
+	}
+	.index_info span {
+		font-weight: bold;
+	}
+	</style>
+</block>
+<block name="body">
+	<php>
+							$system_info_mysql = M()->query("select version() as v;");
+						</php>
+	<div id="main" class="main" style="width:100%;">
+		<p class="index_info">操作系统：<span class="right">{$Think.const.PHP_OS}</span></p>
+		<p class="index_info">优异车品管理系统版本：<span class="right">V{$Think.VERSION}</span></p>
+		<p class="index_info">运行环境：<span class="right">{$_SERVER['SERVER_SOFTWARE']}</span></p>
+		<p class="index_info">MYSQL版本：<span class="right">{$system_info_mysql.0.v}</span></p>
+		<p class="index_info">上传限制：<span class="right">{:ini_get('upload_max_filesize')}</span></p>
+		<p class="index_info">技术支持：<span class="right">Eric 1023753031@qq.com</span></p>
+
+	</div>
+</block>

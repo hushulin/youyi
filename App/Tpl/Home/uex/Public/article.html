@@ -1,0 +1,55 @@
+<!-- 文章 -->
+<div class="menu_zc_news">
+	<div class="menu_news_title">
+	<ul>
+	<li class="menu_news_first"><a href="javascript:;">公告</a></li>
+	<li><a href="javascript:;">入门</a></li>
+	<li><a href="javascript:;">公益</a></li>
+	</ul>
+	</div>
+	<ul class="menu_news_content">
+		<volist name="article_gg" id="vo">
+			<li><a href="{:U('article',array('id'=>$vo['id']));}">{$vo.title}</a></li>
+		</volist>
+	</ul>
+	<ul class="menu_news_content" style="display:none;">
+		<volist name="article_rm" id="vo">
+			<li><a href="{:U('article',array('id'=>$vo['id']));}">{$vo.title}</a></li>
+		</volist>
+	</ul>
+	<ul class="menu_news_content" style="display:none;">
+		<volist name="article_gy" id="vo">
+			<li><a href="{:U('article',array('id'=>$vo['id']));}">{$vo.title}</a></li>
+		</volist>
+	</ul>
+
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.menu_news_title ul a').click(function(event) {
+			$(this).parent().parent().find('li').removeClass('menu_news_first');
+			$(this).parent().addClass('menu_news_first');
+			var tab = $(this).html();
+			switch (tab) {
+				case '公告':
+				$('.menu_news_content').hide();
+				$('.menu_news_content:eq(0)').show();
+				break;
+				case '入门':
+				$('.menu_news_content').hide();
+				$('.menu_news_content:eq(1)').show();
+				break;
+				case '公益':
+				$('.menu_news_content').hide();
+				$('.menu_news_content:eq(2)').show();
+				break;
+				default:
+				$('.menu_news_content').hide();
+				$('.menu_news_content:eq(0)').show();
+				break;
+			}
+		});
+	});
+</script>
+<!-- 文章结束 -->

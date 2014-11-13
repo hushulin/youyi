@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>APP定制平台--ITZI</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="viewport" content="width=device-width"/>
+	<link rel="stylesheet" href="__S__/css/reset.css"/>
+	<link rel="stylesheet" href="__S__/css/style.css"/>
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="__S__/js/jquery-1.10.2.min.js"></script>
+	<![endif]-->
+	<!--[if gte IE 9]>
+	<!-->
+	<script type="text/javascript" src="__S__/js/jquery-2.0.3.min.js"></script>
+	<!--<![endif]-->
+	<script type="text/javascript" src="__S__/js/jquery.cookie.js"></script>
+	<!--<script type="text/javascript" src="__S__/js/json.js"></script>-->
+	<block name="style"></block>
+	<block name="script"></block>
+	<link rel="shortcut icon" href="/favicon.ico"/>
+	<link rel="apple-touch-icon" href="/touchicon.png"/>	
+</head>
+<body onselectstart="return false">
+	<include file="Public/head"/>
+	<div class="clear"></div>
+	<div>
+		<table style="border:0;width:100%;" class="block">
+			<tbody>
+				<tr>
+					<td style="width: 200px;background:#f0f0f0;border-right:1px solid #dedfdf;" valign="top">
+						<div class="g-leftbar">
+							<ul>
+							<volist name = "admin_left_menu" id = "vo">
+								<li><?php if($vo["hchildren"]) echo '&nbsp;&nbsp;+'; else echo "&nbsp;&nbsp;&nbsp;&nbsp;"; ?><a href="{$vo.url|U}" title="">{$vo.title}</a></li>
+							</volist>
+							<block name="leftbar"></block>
+							</ul>
+						</div>
+					</td>
+					<td valign="top">
+						<block name="body"></block>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="clear"></div>
+	<include file="Public/foot"/>
+</body>
+</html>

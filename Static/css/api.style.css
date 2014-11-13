@@ -1,0 +1,129 @@
+body {
+	font-family: "Century Gothic", "Microsoft yahei";
+	font-size: 14px;
+	background: #FDFDFD;
+	color: #454545;
+	line-height: 1.8em;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+}
+
+#wp {
+	margin: 30px;
+	background: #FFF;
+}
+
+#wp2 {
+	border: 5px #d4d4d4 solid;
+}
+
+#header {
+	padding: 10px;
+	background: #f8f8f8;
+}
+
+#header a {
+	display: block;
+	float: left;
+/*	width: 100px;
+	height: 40px;
+	line-height: 40px;*/
+	border: 1px #999 dashed;
+	background: #FFF;
+	margin-right: 10px;
+	text-align: center;
+}
+
+#header a:hover {
+	border: 1px #999 dashed;
+	background: #454545;
+	color: #ffffff;
+}
+
+#content {
+	padding: 10px;
+}
+
+.form {
+	border-top: 5px #e6e6e6 solid;
+}
+
+.form li {
+	padding: 0 30px;
+	line-height: 45px;
+	border-bottom: 1px #e6e6e6 dashed;
+}
+
+.form li.title {
+	padding-left: 5px;
+	line-height: 45px;
+	border-bottom: 1px #e6e6e6 dashed;
+	background: #f5f5f5;
+	font-weight: 700;
+}
+
+.form li span {
+	display: inline-block;
+	margin-right: 10px;
+	width: 200px;
+	text-align: right;
+}
+
+.clear {
+	clear: both;
+}
+
+.desc {
+	border: 1px #c2c2c2 dashed;
+	background: #feffdb;
+	word-break: break-all;
+	padding: 5px;
+	font-size: 16px;
+}
+
+#footer {
+	padding: 10px;
+	background: #f8f8f8;
+	text-align: center;
+}
+
+input {
+	line-height: 35px;
+	height: 35px;
+	padding: 0 5px;
+}
+
+select {
+	line-height: 35px;
+	height: 35px;
+}
+
+input[type=text] {
+	border: none;
+	border: 1px #d4d4d4 solid;
+}
+
+input[type=submit] {
+	padding: 0 15px;
+}
+
+textarea{
+    width: 300px;
+    height: 150px;
+}
+.tip {
+	border: 1px #FFF5C6 solid;
+	background: #feffdb;
+}

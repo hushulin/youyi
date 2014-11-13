@@ -1,0 +1,44 @@
+<extend name="Public:base_blank" />
+
+<block name="body">
+	<div id="main" class="g-main">
+		<div class="row m-title">
+			<h2>字段管理</h2>
+		</div>
+		<div class="row">
+			<a class="u-btn" href="{:U('/Admin/Field/add/rid/'.$rid.'')}">新 增</a>
+		</div>
+		<div class="row">
+			<table class="m-table">
+				<thead>
+					<tr>
+						<th class="cola">编号</th>
+						<th>名称</th>
+						<th class="cola">标识</th>
+						<th class="cola">类型</th>
+						<th class="colb">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<volist name = "list" id = "vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td>{$vo.title}</td>
+						<td>{$vo.name}</td>
+						<td>{:$field_type[$vo["type"]]}</td>
+						<td>
+							<a href="{:U('/Admin/Field/edit/rid/'.$rid.'/id/'.$vo['id'])}" title="">编辑</a>
+							<a href="{:U('/Admin/Field/del/rid/'.$rid.'/id/'.$vo['id'])}" title="">删除</a>
+						</td>
+					</tr>
+					</volist>
+				</tbody>
+			</table>
+		</div>
+		<div class="row">
+			<div class="m-page m-page-lt">
+			    {$page}
+			</div>
+		</div>
+	</div>
+</block>

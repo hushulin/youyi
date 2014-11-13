@@ -1,0 +1,19 @@
+<!--晒心得-->
+<div class="tips">
+	<div class="container_Listweek_title">
+		<h1>他们的晒物心得</h1><span class="hyh_style"> <a href="#">换一换</a></span>	
+	</div>
+	<div class="tips_content">
+		<ul class="tips_content_ul">
+			<volist name="list" id="vo">
+				<li>
+					<img src="{$vo.img}?h=77&w=77" />
+					<div class="tips_hight">
+						<p><a href="{:U('detail',array('id'=>$vo['goods_id']));}">{$vo.content|dsubstr=40}</a></p>
+						<span>赞44&nbsp;&nbsp;&nbsp;&nbsp;品论57</span>
+					</div>
+				</li>
+			</volist>
+		</ul>
+	</div>
+</div>

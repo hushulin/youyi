@@ -1,0 +1,37 @@
+<extend name="Public:base" />
+<block name="style"></block>
+<block name="script"></block>
+
+<block name="body">
+	<div id="main" class="g-main">
+		<table class="m-table"></table>
+		<div class="row m-title">
+			<h2>用户管理 - 删除用户</h2>
+		</div>
+		<div class="row">
+<?php 
+$rurl = base64_decode($_GET["rurl"]);
+$rurl = empty($rurl)?U("/Admin/User"):$rurl;
+?>			<a class="u-btn" href="{$rurl}">返回列表</a>
+		</div>
+		<div class="row">
+			<div class="m-form">
+				<form name="m-form" method="post">
+					<fieldset>
+						<div class="formitm">
+							<input type="hidden" name="id" value="{$id}">
+							您确定要删除 #{$id} 数据吗？
+						</div>
+						<div class="formitm">
+							<button class="u-btn" type="submit">确定</button>
+<?php 
+$rurl = base64_decode($_GET["rurl"]);
+$rurl = empty($rurl)?U("/Admin/User"):$rurl;
+?>							<a class="u-btn u-btn-c1" href="{$rurl}" title="取消">取消</a>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+</block>

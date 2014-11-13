@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$head_title|default="优异车品"}-{$goods.title}</title>
+<link href="__PUBLIC__/css/ycp.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/css/info.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<include file="Public:top" />
+<!--menu-->
+	<div class="container">
+		<div class="menu_content">
+			<div class="menu_content_right widthtz">
+				<div class="menu_title">
+					<div class="menu_cpfl_title czdq">车品世界</div>
+					<ul class="top_right_ul menu_title_ul czdq_783">
+						<volist name="nav" id="vo">
+							<li><a href="{$vo.url}">{$vo.name}</a></li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+<!--可能你会感兴趣-->
+	<div class="container">
+		<div class="container_left">
+			<div class="interest">
+				<!--热门活动-->
+				<div class="position">
+					<p>当前位置:
+						<a href="/">首页</a><i>></i>
+						<em class="wzxqc">{$goods.title}</em>
+					</p>
+				</div>
+<!--文章详情-->			
+			<div class="article_details">
+				<div class="article_details_title">
+					<a href="{$goods.out}"><h1>{$goods.title}</h1></a>
+					<p class="article_details__auth">推荐人：{$goods.tuijian_user}    分类： {$goods.tag}		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$goods.out}" style="color:red">{$goods.urlstring}有售</a></p>
+				</div>
+				
+				<div class="article_details_content">
+					<div style="text-align:center;">
+						<img src="{$goods.img}?w=500&h=300">
+					</div>
+					<div style="padding:20px;">{$goods.content}</div>
+					
+					
+					<div class="contrast">
+						<div class="zhi_red">值</div>
+						<div class="time">{$goods.good_number}:{$goods.good_numbers|default=0}</div>
+						<div class="zhi_black">值</div>
+					</div>
+					<div class="previous_posts">
+						<div class="previous_posts_left">
+							<p><em>上一篇</em> <a href="{:U('detail',array('id'=>$goods_prev['id']));}"> {$goods_prev.title}</a></p>
+							<p><em>下一篇</em><a href="{:U('detail',array('id'=>$goods_next['id']));}"> {$goods_next.title}</a></p>	
+						</div>
+						<div class="previous_posts_right">
+							<div class="activity_contet_tb padding_top0"> 
+								<a href="#" class="bk2 dlk">{$goods.collection_number}</a>						
+								<a href="#" class="bk3 dlk">{$goods.comment_number}</a>						
+								<div class="bshare-custom"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=1&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+							</div>
+						</div>
+					</div>
+<!--你可能还喜欢-->					
+					<div class="also_like">
+						<h2>你可能还喜欢</h2>
+							<ul class="also_like_ul">
+								<li>
+									<div class="also_like_img">
+										<a href="#"><img src="__PUBLIC__/image/fgbn.png" width="217" height="131" /></a>
+									</div>
+									<p><a href="#">LAB SERIES 朗士美国官网海淘男士护肤品 </a><span>满100元包邮</span></p>
+								</li>
+								
+								<li>
+									<div class="also_like_img">
+										<a href="#"><img src="__PUBLIC__/image/fgbn.png" width="217" height="131" /></a>
+									</div>
+									<p><a href="#">LAB SERIES 朗士美国官网海淘男士护肤品 </a><span>满100元包邮</span></p>
+								</li>
+								
+								<li class="julnd">
+									<div class="also_like_img">
+										<a href="#"><img src="__PUBLIC__/image/fgbn.png" width="217" height="131" /></a>
+									</div>
+									<p><a href="#">LAB SERIES 朗士美国官网海淘男士护肤品 </a><span>满100元包邮</span></p>
+								</li>
+							</ul>
+						</div>
+
+						<div class="comments">
+							
+							<!-- UY BEGIN -->
+							<div id="uyan_frame"></div>
+							<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
+							<!-- UY END -->
+						</div>
+				</div>
+
+			</div>
+			
+		</div>
+	</div>
+
+<!--右边-->
+<!--每周榜单-->
+			<div class="container_right">
+<!--公告  入门-->
+				<div class="menu_bottom_right pat20">
+					<include file="Public:article" />
+					<div class="fact"><h3><a href="javascript:;">我要爆料</a></h3></div>
+				</div>			
+	
+<!--右边banner-->
+	<div class="right_banner">
+		<a href="#"><img src="__PUBLIC__/image/right_banner.png" border="0" /></a> 
+	</div>
+
+
+<!--浏览最多-->
+{:W('Biz');}
+<!--晒心得-->
+{:W('Sai');}
+</div>
+
+</div>
+	<include file="Public:foot" />
+</body>
+</html>

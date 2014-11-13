@@ -1,0 +1,144 @@
+<{$phpstart}>
+
+// +----------------------------------------------------------------------
+// | ITZI [ 让一切变得简单 ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2013 http://www.itzi.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Author: wenliang <www.vvv@qq.com>
+// +----------------------------------------------------------------------
+
+class <{$action_name}>Action extends AdminAction {
+
+	public function index(){
+<?php 
+	if($table_info["type"] == 0){
+?>
+		$key = I("get.key","","trim,stripslashes,strip_tags");
+		$value = I("get.value","","trim,stripslashes,strip_tags");
+		$map = array();
+		if(!empty($key)){
+			if(!empty($value)){
+				$map = array($key => array('like', "%{$value}%"));
+			}
+		}
+		$<{$action_name}> = D("<{$action_name}>");  // 实例化<{$action_name}>对象
+		import("ORG.Util.Page");                    // 导入分页类
+		$count      = $<{$action_name}>->where($map)->count();   // 查询满足要求的总记录数
+		$Page       = new Page($count, 10);         // 实例化分页类 传入总记录数和每页显示的记录数
+		$Page->setConfig('theme'," <span>%totalRow% %header% %nowPage%/%totalPage% 页</span> %first% %prePage% %upPage% %linkPage% %downPage% %nextPage% %end%");
+		$show       = $Page->show();                // 分页显示输出
+		$list = $<{$action_name}>->where($map)->limit($Page->firstRow.','.$Page->listRows)->order("id desc")->select();
+		$this->assign('list',$list);                // 输出列表数据
+		$this->assign('page',$show);                // 赋值分页输出
+<volist name = "field_define_list" id = "field">
+<{$t}><{$t}>$this->assign('field_<{$field.name}>',$<{$action_name}>->field_<{$field.name}>);<{$rn}>
+</volist>
+		$this->assign('kkey', $key);					// 搜索字段
+		$this->assign('value', $value);				// 搜索值
+		$this->assign("rurl", $_SERVER["REQUEST_URI"]);
+		$this->display();
+<?php
+	}else{
+?>
+		$<{$action_name}> = D("<{$action_name}>");  // 实例化<{$action_name}>对象
+		$list = tree_to_list2(list_to_tree($<{$action_name}>->select()));
+		$this->assign('list',$list);                // 输出列表数据
+		$this->display();
+<?php
+	}
+?>
+
+	}
+
+	public function add(){
+		$<{$action_name}> = D("<{$action_name}>"); // 实例化<{$action_name}>对象
+		if(IS_POST){
+			if (!$<{$action_name}>->create()){
+				// 如果创建失败 表示验证没有通过 输出错误提示信息
+				$this->error($<{$action_name}>->getError());
+			}else{
+				// 验证通过 可以进行其他数据操作
+				$re = $<{$action_name}>->add<{$action_name}>();
+				if ($re !== false) {
+					$rurl = base64_decode($_GET["rurl"]);
+					$rurl = empty($rurl)?"/Admin/<{$action_name}>":$rurl;
+					$this->success('数据保存成功！', $rurl);
+				} else {
+					$this->error($<{$action_name}>->getError());
+				}
+			}
+		}else{
+<?php 
+	if($table_info["type"] == 1){
+?>
+			$this->assign('field_pid',$<{$action_name}>->field_pid);
+<?php
+	}
+?>
+<volist name = "field_define_list" id = "field">
+<{$t}><{$t}><{$t}>$this->assign('field_<{$field.name}>',$<{$action_name}>->field_<{$field.name}>);<{$rn}>
+</volist>
+			$this->display();
+		}
+	}
+
+	public function edit(){
+		$<{$action_name}> = D("<{$action_name}>"); // 实例化<{$action_name}>对象
+		if(IS_POST){
+			if (!$<{$action_name}>->create()){
+				// 如果创建失败 表示验证没有通过 输出错误提示信息
+				$this->error($<{$action_name}>->getError());
+			}else{
+				// 验证通过 可以进行其他数据操作
+				$re = $<{$action_name}>->save<{$action_name}>();
+				if ($re !== false) {
+					$rurl = base64_decode($_GET["rurl"]);
+					$rurl = empty($rurl)?"/Admin/<{$action_name}>":$rurl;
+					$this->success('数据保存成功！', $rurl);
+				} else {
+					$this->error($<{$action_name}>->getError());
+				}
+			}
+		}else{
+			$id = I("get.id","","trim,stripslashes,strip_tags,intval");
+			$map["id"] = $id;
+			$doc = $<{$action_name}>->where($map)->find();
+			$this->assign('doc',$doc);
+<?php 
+	if($table_info["type"] == 1){
+?>
+			$this->assign('field_pid',$<{$action_name}>->field_pid);
+<?php
+	}
+?>
+<volist name = "field_define_list" id = "field">
+<{$t}><{$t}><{$t}>$this->assign('field_<{$field.name}>',$<{$action_name}>->field_<{$field.name}>);<{$rn}>
+</volist>
+			$this->display();
+			
+		}
+	}
+
+	public function del(){
+		$<{$action_name}> = D("<{$action_name}>"); // 实例化<{$action_name}>对象
+		if(IS_POST){
+			$id = I("get.id","","trim,stripslashes,strip_tags,intval");
+			$map = array();
+			$map["id"] = $id;
+			$re = $<{$action_name}>->where($map)->delete<{$action_name}>();
+			if ($re !== false) {
+				$rurl = base64_decode($_GET["rurl"]);
+				$rurl = empty($rurl)?"/Admin/<{$action_name}>":$rurl;
+				$this->success('数据删除成功！', $rurl);
+			} else {
+				$this->error($<{$action_name}>->getError());
+			}
+		}else{
+			$id = I("get.id","","trim,stripslashes,strip_tags,intval");
+			$this->assign('id',$id);
+			$this->display();
+		}
+	}
+}
+<{$phpend}>

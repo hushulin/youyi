@@ -1,0 +1,12 @@
+		preg_match_all("/<img([^>]*)\s*src=('|\")([^'\"]+)('|\")/", $this->data["content"], $matches);//带引号 
+	    //preg_match_all("/<img([^>]*)\ssrc=([^\s>]+)/",$string,$matches);//不带引号 
+	    $new_arr=array_unique($matches[3]);//去除数组中重复的值 
+	    foreach ($new_arr as $key => $value) {
+	    	if(substr(value, 0, 7) != "http://"){
+	    		$new_arr[$key] = C("UPLOAD_HOST").$value;
+	    	}
+	    }
+	    $this->data["pics"] = implode(",", $new_arr);
+	    $this->data["pic_count"] = count($new_arr);
+
+	    	protected $trueTableName = 'yang_user';

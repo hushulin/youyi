@@ -1,0 +1,85 @@
+<extend name="Public:base" />
+<block name="style"></block>
+<block name="script">
+	<script>
+		$(document).ready(function() {
+			$("#chkall").change(function() {
+				$obj = this;
+				$(".chkall").each(function(index, val) {
+					this.checked = $obj.checked;
+				});
+			});
+			$(".chkall").click(function(){
+				document.getElementById("chkall").checked = $(".chkall").length == $(".chkall:checked").length ? true : false;
+			});
+			$(".mdel").click(function(event) {
+				if($(".chkall:checked").length > 0){
+					$("#main_form").submit();
+				}else{
+					alert("请选择您要删除的数据！");
+				}
+			});
+		});
+	</script>
+</block>
+<block name="body">
+	<div id="main" class="g-main">
+		<div class="row m-title">
+			<h2>车品管理</h2>
+		</div>
+		<div class="row">
+			<div class="left">
+				<a class="u-btn" href="{:U('/Admin/Cargoods/add')}?rurl={:base64_encode($rurl)}">新 增</a>
+			</div>
+			<div class="m-form right">
+								<form id="search_form" method="get">
+					<fieldset>
+						<div>
+							<label class="lab">搜索：</label>
+							<div class="ipt">
+								<select name="key" class="u-select" style="width:80px;">
+									<option value="title" <?php if($kkey == "title") echo 'selected="selected"'; ?>>标题</option><option value="content" <?php if($kkey == "content") echo 'selected="selected"'; ?>>内容</option>								</select>
+								<input name="value" type="text" class="u-ipt" value="{$value}"/>
+								<input type="submit" class="u-btn" value="搜索">
+							</div>
+						</div>
+					</fieldset>
+				</form>
+							</div>
+			<div class="clear"></div>
+		</div>
+		<div class="row">
+			<form id="main_form" action="{:U('/Cargoods/maction')}" method="get">
+				<table class="m-table">
+					<thead>
+						<tr>
+							<th class="colid">编号</th>
+							<th>标题</th>
+								<th class="cola">分类</th>
+								<th class="cola">频道</th>
+								<th class="cola">推荐人</th>
+							<th class="colb">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<volist name = "list" id = "vo">
+						<tr>
+							<td>{$vo.id}</td>
+							<td><?php if(isset($field_title)){echo $field_title[$vo["title"]];}else{echo $vo["title"];}?></td><td><?php if(isset($field_cate_id)){echo $field_cate_id[$vo["cate_id"]];}else{echo $vo["cate_id"];}?></td><td><?php if(isset($field_type_id)){echo $field_type_id[$vo["type_id"]];}else{echo $vo["type_id"];}?></td><td><?php if(isset($field_tuijian_user)){echo $field_tuijian_user[$vo["tuijian_user"]];}else{echo $vo["tuijian_user"];}?></td>							
+							<td>
+								<a href="{:U('/Admin/Cargoods/edit/id/'.$vo['id'])}?rurl={:base64_encode($rurl)}" title="">编辑</a>
+								<a href="{:U('/Admin/Cargoods/del/id/'.$vo['id'])}?rurl={:base64_encode($rurl)}" title="">删除</a>
+							</td>
+						</tr>
+						</volist>
+					</tbody>
+				</table>
+			</form>
+		</div>
+		<div class="row">
+			<div class="m-page m-page-lt">
+				{$page}
+			</div>
+		</div>
+	</div>
+</block>

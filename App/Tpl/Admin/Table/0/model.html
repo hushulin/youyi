@@ -1,0 +1,140 @@
+<{$phpstart}>
+
+// +----------------------------------------------------------------------
+// | ITZI [ 让一切变得简单 ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2013 http://www.itzi.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Author: wenliang <www.vvv@qq.com>
+// +----------------------------------------------------------------------
+
+class <{$action_name}>Model extends Model{
+
+	protected $_validate = array(
+<{$field_validate}>
+	);
+	protected $_auto = array ( 
+		array('create_time','time',1,'function'), // 对create_time字段在更新的时候写入当前时间戳
+		array('update_time','time',2,'function'), // 对create_time字段在更新的时候写入当前时间戳
+<{$field_auto}>
+	);
+
+	function add<{$action_name}>(){
+		if($this->custom_insert()){
+			D("Table")->updateTable("<{$table_name}>");
+			<volist name="field_list" id="field">
+				<?php if($field["type"] == 3){?>
+				if (isset($this->data['<{$field.name}>'])) $this->data['<{$field.name}>'] = strtotime($this->data['<{$field.name}>']);
+				<?php }?>
+			</volist>
+			return $this->add();			
+		}else{
+			return false;
+		}
+	}
+
+	function save<{$action_name}>(){
+		if($this->custom_update()){
+			D("Table")->updateTable("<{$table_name}>");
+			<volist name="field_list" id="field">
+				<?php if($field["type"] == 3){?>
+				if (isset($this->data['<{$field.name}>'])) $this->data['<{$field.name}>'] = strtotime($this->data['<{$field.name}>']);
+				<?php }?>
+			</volist>
+			return $this->save();
+		}else{
+			return false;
+		}
+	}
+
+	function delete<{$action_name}>(){
+		if($this->custom_delete()){
+			$id = $this->options["where"]["id"];
+			D("Table")->updateTable("<{$table_name}>");
+			return $this->delete();
+		}else{
+			return false;
+		}
+	}
+
+	function custom_insert(){
+		$this->fixarray();
+		<{$table_info.custom_code_insert}>
+		return true;
+	}
+
+	function custom_update(){
+		$this->fixarray();
+		<{$table_info.custom_code_update}>
+		return true;
+	}
+
+	function custom_delete(){
+		<{$table_info.custom_code_delete}>
+		return true;
+	}
+	
+	function fixarray(){
+		foreach ($this->data as $key => $value) {
+			if(is_array($value)){
+				$this->data[$key] = implode(",", $this->data[$key]);
+			}
+		}
+	}
+
+<{$t}>function __get($property_name){<{$rn}>
+<?php 
+	if($table_info["type"] == 1){
+?>
+		if($property_name == 'field_pid'){
+			$list = tree_to_list2(list_to_tree(D("<{$action_name}>")->select()));
+			foreach($list as $k => $v){
+				$result[$v["id"]] = $v["title"];
+			}
+			return $result;
+		}
+<?php
+	}
+?>
+<volist name = "field_define_list" id = "field">
+<{$t}><{$t}>if($property_name == 'field_<{$field.name}>'){
+<?php 
+	$param = $field["param"];
+	if($param["type"] == 0){
+		$data = $param["data"];
+		$data_arr = gen_para($data);
+?>
+<{$t}><{$t}><{$t}>return array(
+<volist name = "data_arr" id ="vo">
+<{$t}><{$t}><{$t}><{$t}>"<{$vo.0}>" => "<{$vo.1}>",<{$rn}>
+</volist>
+<{$t}><{$t}><{$t}>);
+<?php
+	} 
+	if($param["type"] == 1){
+		$table = $param["table"];
+		$key = $param["key"];
+		$value = $param["value"];
+		$tableinfo = D("Table")->where("name = '".strtolower($table)."'")->find();
+		if($tableinfo["type"] == 1){
+?>
+<{$t}><{$t}><{$t}>$list = tree_to_list2(list_to_tree(D("<{$table}>")->select()));
+<?php
+		}else{
+?>
+<{$t}><{$t}><{$t}>$list = D("<{$table}>")->select();
+<?php
+		}
+?>
+<{$t}><{$t}><{$t}>foreach($list as $k => $v){
+<{$t}><{$t}><{$t}><{$t}>$result[$v["<{$key}>"]] = $v["<{$value}>"];
+<{$t}><{$t}><{$t}>}
+<{$t}><{$t}><{$t}>return $result;<{$rn}>
+<?php
+	}
+?>
+<{$t}><{$t}>}<{$rn}>
+</volist>
+	}
+}
+<{$phpend}>

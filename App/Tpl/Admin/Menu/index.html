@@ -1,0 +1,44 @@
+<extend name="Public:base" />
+
+<block name="body">
+	<div id="main" class="g-main">
+		<div class="row m-title">
+			<h2>菜单管理</h2>
+		</div>
+		<div class="row">
+			<div class="left">
+				<a class="u-btn" href="{:U('/Admin/Menu/add')}">新 增</a>
+			</div>
+			<div class="m-form right">
+			    
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="row">
+			<table class="m-table">
+				<thead>
+					<tr>
+						<th class="cola">编号</th>
+						<th>菜单名</th>
+						<th class="cola">排序</th>
+						<th class="colb">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<volist name = "list" id = "vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td>{$vo.title}</td>
+						<td>{$vo.sort}</td>
+						<td>
+							<a href="{:U('/Admin/Menu/add/pid/'.$vo['id'])}" title="">添加子项</a>
+							<a href="{:U('/Admin/Menu/edit/id/'.$vo['id'])}" title="">编辑</a>
+							<a href="{:U('/Admin/Menu/del/id/'.$vo['id'])}" title="">删除</a>
+						</td>
+					</tr>
+					</volist>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</block>
