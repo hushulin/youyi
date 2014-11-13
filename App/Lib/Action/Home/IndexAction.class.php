@@ -48,17 +48,29 @@ class IndexAction extends EmptyAction
 		$this->display();
 	}
 
+	// 用户前台发起
+	public function publish()
+	{
+		$this->display();
+	}
+
 	// 列表页
 	public function lists()
 	{
 		$type_id = I('get.type_id');
 		$cate_id = I('get.cate_id');
+		$keywords = I('get.keywords');
 		$model = D('Cargoods');
 		if (!empty($type_id)) {
 			$where['type_id'] = $type_id;
 		}
 		if (!empty($cate_id)) {
 			$where['cate_id'] = $cate_id;
+		}
+		if (!empty($keywords)) {
+			$where['content'] = array('LIKE','%'.$keywords.'%');
+			$where['title'] = array('LIKE','%'.$keywords.'%');
+			$where['_logic'] = 'or';
 		}
 
 		import('ORG.Util.Page');// 导入分页类

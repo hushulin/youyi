@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php echo (($head_title)?($head_title):"优异车品"); ?>-<?php echo ($cate_name); ?></title>
+<title><?php echo (($head_title)?($head_title):"优异车品"); ?>-我要爆料</title>
 <link href="__PUBLIC__/css/ycp.css" rel="stylesheet" type="text/css" />
 <link href="__PUBLIC__/css/info.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
@@ -59,7 +59,7 @@
 		<div class="menu_content">
 			<div class="menu_content_right widthtz">
 				<div class="menu_title">
-					<div class="menu_cpfl_title czdq"><?php echo (($cate_name)?($cate_name):'所有分类'); ?></div>
+					<div class="menu_cpfl_title czdq">用户频道</div>
 					<ul class="top_right_ul menu_title_ul czdq_783">
 						<?php if(is_array($nav)): $i = 0; $__LIST__ = $nav;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li><a href="<?php echo ($vo["url"]); ?>"><?php echo ($vo["name"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
 					</ul>
@@ -68,8 +68,7 @@
 					<?php echo W('Adv',array('url'=>__SELF__));;?>
 					
 					<div class="menu_bottom_right">
-						<?php echo W('Article',array('count'=>4));;?>
-						<div class="fact"><h3><a href="<?php echo U('publish');;?>">我要爆料</a></h3></div>
+						<?php echo W('Article',array('count'=>8));;?>
 					</div>
 				</div>
 			</div>
@@ -81,68 +80,45 @@
 <div class="container">
 	<div class="container_left">
 		<div class="interest">
-			<!--热门活动-->
-			<div class="PopularP_activities">
-				<div class="PopularP_activities_left">热门活动</div>
-				<div class="PopularP_activities_right">
-					<ul class="PopularP_activities_ul">
-						<?php if(is_array($cate)): $i = 0; $__LIST__ = $cate;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li><a href="<?php echo U('lists',array('cate_id'=>$vo['id']));;?>"><?php echo ($vo["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
-					</ul>
-			</div>
-		</div>
-
-		
-<!---->		
+		<!-- 爆料频道 -->
 		<div class="Favourable_activity">
-			<div class="menu_news_title hdsad">
-				<ul>
-					<?php if(is_array($cc)): $i = 0; $__LIST__ = $cc;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li <?php if ($_GET['type_id'] == $vo['id']): ?>
-							 class="menu_news_first"
-						<?php endif; ?>><a href="<?php echo U('',array('type_id'=>$vo['id'],'cate_id'=>$_GET['cate_id']));;?>"><?php echo ($vo["name"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
-				</ul>
-			</div>
-			<ul class="Favourable_activity_ul">
-				<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li>
-					<div class="Favourable_activity_title">
-						<span class="Stick2">置顶</span>
-						<a href="<?php echo U('detail',array('id'=>$vo['id']));;?>"><h2><?php echo ($vo["title"]); ?></h2></a>
-					</div>
-					<div class="watch_image"><a href="<?php echo U('detail',array('id'=>$vo['id']));;?>"><img src="<?php echo ($vo["img"]); ?>?w=190&h=205" border="0" /></a></div>
-					<div class="Favourable_activity_contet">
-						<div class="label">
-							<p>
-								<span>标签：<?php echo ($vo["tag"]); ?></span>&nbsp;
-							 	<em class="label_em"><?php echo (date("Y-m-d H:i",$vo["create_time"])); ?></em>
-					      </p> 
-						</div>
-						<div class="activity_contet_t">
-							<p>
-								<span>
-									<?php echo (dsubstr($vo["content"],250)); ?>
-								</span>
-								<em class="color"><a href="<?php echo U('detail',array('id'=>$vo['id']));;?>">阅读全文</a></em>							
-							</p>
-						</div>
-						<div class="activity_contet_tb"> 
-							<a href="#" class="bk1">值<?php echo ($vo["good_number"]); ?> </a> 
-							<a href="#" class="bk1">不值 <?php echo number_format($vo['good_number']/5,0); ?> </a> 
-							<a href="#" class="bk2"><?php echo ($vo["collection_number"]); ?> </a>						
-							<a href="#" class="bk3"><?php echo ($vo["comment_number"]); ?></a>						
-							<a href="<?php echo ($vo["out"]); ?>" class="bk4"><?php echo ($vo["urlstring"]); ?></a> 
-							</div>
-					</div>
-				</li><?php endforeach; endif; else: echo "" ;endif; ?>
 
-			</ul>	
+			<div class="m-hd m-hd-bg m-hd-rt">
+			    <h2 class="u-tt">用户爆料中心</h2>
+			    <ul>
+			        <li class="z-crt"><a href="javascript:;">我要晒单</a></li>
+			        <li><a href="javascript:;">我要分享经验</a></li>
+			        <li><a href="javascript:;">我要爆料</a></li>
+			        <li><a href="javascript:;">我要发文章</a></li>
+			    </ul>
+			</div>
+
+			<!-- 表单 -->
+			<div class="m-slide m-slide-y" style="width:100%;height:800px;">
+			    <ol>
+			        <li class="z-crt">
+			        	<div style="width:100%;height:800px;background-color:#aaa;">
+			        		我要晒单
+			        	</div>
+			        </li>
+			        <li>
+			        	<div style="width:100%;height:800px;background-color:#eee;">
+			        		我要分享经验
+			        	</div>
+			        </li>
+			        <li>
+			        	<div style="width:100%;height:800px;background-color:#242423;">
+			        		我要爆料
+			        	</div>
+			        </li>
+			        <li>
+			        	<div style="width:100%;height:800px;background-color:#777777;">
+			        		我要发文章
+			        	</div>
+			        </li>
+			    </ol>
+			</div>
 		</div>
-		
-		
-		<div class="pagination">
-                  <ul contenteditable="true">
-                  	<?php echo ($page); ?>
-                  </ul>
-           </div>
-		
 		
 	</div>
 </div>
@@ -229,5 +205,17 @@
 	</div>
 </div>	
 	
+	<script type="text/javascript">
+		(function(li){
+			$.each(li, function(index, val) {
+				 $(val).bind('click', function(event) {
+				 	$(li).removeClass('z-crt');
+				 	$(this).addClass('z-crt');
+				 	$('.m-slide ol li').removeClass('z-crt');
+				 	$('.m-slide ol li').eq(index).addClass('z-crt');
+				 });
+			});
+		})($('.m-hd ul li'));
+	</script>
 </body>
 </html>

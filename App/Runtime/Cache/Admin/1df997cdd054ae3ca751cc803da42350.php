@@ -36,7 +36,9 @@
 <body onselectstart="return false">
 	<div class="g-header">
 	<div class="m-logo left">
-		APP后台管理系统
+		<div style="text-align:center;line-height:60px;">
+			<img src="__PUBLIC__/image/ycp_logo.png?w=140&h=30" alt="" style="position:relative;top:10px;">
+		</div>
 	</div>
 	<div class="m-topmenu left">
 		<ul>
@@ -96,9 +98,10 @@
 						<div class="tab tab_1">
 							<div><input type="hidden" name="id" value="<?php echo ($doc["id"]); ?>"/></div>
 							<div class="formitm">
-									<label class="lab">用户ID:</label>
+									<label class="lab">用户:</label>
 									<div class="ipt">
-										<input type="text" class="u-ipt" name="user_id" value="<?php echo ($doc["user_id"]); ?>"/>
+										<select class="u-select" name="user_id"><?php if(is_array($field_user_id)): $i = 0; $__LIST__ = $field_user_id;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($key); ?>" <?php if($key == $doc["user_id"]) echo 'selected="selected"'; ?> ><?php echo ($vo); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+</select>
 										<p></p>
 									</div>
 								</div>

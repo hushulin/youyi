@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$head_title|default="优异车品"}-我要爆料</title>
+<link href="__PUBLIC__/css/ycp.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/css/info.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+</head>
+
+<body>
+	<include file="Public:top" />
+	<div class="container">
+		<div class="menu_content">
+			<div class="menu_content_right widthtz">
+				<div class="menu_title">
+					<div class="menu_cpfl_title czdq">用户频道</div>
+					<ul class="top_right_ul menu_title_ul czdq_783">
+						<volist name="nav" id="vo">
+							<li><a href="{$vo.url}">{$vo.name}</a></li>
+						</volist>
+					</ul>
+				</div>
+				<div class="menu_title_bottom">
+					{:W('Adv',array('url'=>__SELF__));}
+					
+					<div class="menu_bottom_right">
+						{:W('Article',array('count'=>8));}
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+<!--可能你会感兴趣-->
+<div class="container">
+	<div class="container_left">
+		<div class="interest">
+		<!-- 爆料频道 -->
+		<div class="Favourable_activity">
+
+			<div class="m-hd m-hd-bg m-hd-rt">
+			    <h2 class="u-tt">用户爆料中心</h2>
+			    <ul>
+			        <li class="z-crt"><a href="javascript:;">我要晒单</a></li>
+			        <li><a href="javascript:;">我要分享经验</a></li>
+			        <li><a href="javascript:;">我要爆料</a></li>
+			        <li><a href="javascript:;">我要发文章</a></li>
+			    </ul>
+			</div>
+
+			<!-- 表单 -->
+			<div class="m-slide m-slide-y" style="width:100%;height:800px;">
+			    <ol>
+			        <li class="z-crt">
+			        	<div style="width:100%;height:800px;background-color:#aaa;">
+			        		我要晒单
+			        	</div>
+			        </li>
+			        <li>
+			        	<div style="width:100%;height:800px;background-color:#eee;">
+			        		我要分享经验
+			        	</div>
+			        </li>
+			        <li>
+			        	<div style="width:100%;height:800px;background-color:#242423;">
+			        		我要爆料
+			        	</div>
+			        </li>
+			        <li>
+			        	<div style="width:100%;height:800px;background-color:#777777;">
+			        		我要发文章
+			        	</div>
+			        </li>
+			    </ol>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+<!--右边-->
+<!--每周榜单-->
+<div class="container_right">
+			
+	
+<!--右边banner-->
+	<div class="right_banner">
+		<a href="javascript:;"><img src="__PUBLIC__/image/right_banner.png" border="0" /></a> 
+	</div>
+
+<!--发现精彩...-->	
+	<div class="activeing">
+		{:W('Fx');}
+
+<!--浏览最多-->
+	{:W('Biz');}
+
+<!--晒心得-->
+{:W('Sai');}
+</div>
+
+</div>
+	<include file="Public:foot" />
+	<script type="text/javascript">
+		(function(li){
+			$.each(li, function(index, val) {
+				 $(val).bind('click', function(event) {
+				 	$(li).removeClass('z-crt');
+				 	$(this).addClass('z-crt');
+				 	$('.m-slide ol li').removeClass('z-crt');
+				 	$('.m-slide ol li').eq(index).addClass('z-crt');
+				 });
+			});
+		})($('.m-hd ul li'));
+	</script>
+</body>
+</html>
