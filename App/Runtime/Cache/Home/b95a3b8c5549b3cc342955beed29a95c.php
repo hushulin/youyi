@@ -129,8 +129,8 @@
 							</li></a><?php endforeach; endif; else: echo "" ;endif; ?>
 				</ul>
 			</div>
-
-		<div class="activity">
+<!-- 
+		//<div class="activity">
 			<div class="activity_title">
 				<h1>本地活动</h1>
 			</div>
@@ -172,7 +172,7 @@
 				</div>
 			</div>
 		</div>
-		
+		 -->
 <!--爱车中心-->
 	<div class="lovecar">
 		<div class="interest_title">
@@ -404,8 +404,7 @@
 
 <!--右边-->
 <div class="container_right">
-	<!-- <?php echo W('Week');;?> -->
-<?php echo W('Biz');;?>
+
 <?php echo W('Act');;?>
 <!--右边banner-->
 <div class="right_banner">

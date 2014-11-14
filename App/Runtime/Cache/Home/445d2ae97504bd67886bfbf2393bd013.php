@@ -161,8 +161,7 @@
 	<div class="activeing">
 		<?php echo W('Fx');;?>
 
-<!--浏览最多-->
-	<?php echo W('Biz');;?>
+
 
 <!--晒心得-->
 <?php echo W('Sai');;?>
