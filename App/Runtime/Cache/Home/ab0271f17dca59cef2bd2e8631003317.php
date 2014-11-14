@@ -239,7 +239,7 @@
 				<div class="ycp_bottomn_seven">
 					<h1>400-818-6060</h1>  
 					<span>周一到周六：9：00-18-00</span>
-					<p><a href="javascript:;">优异车品</a></p>	
+					<p><a href="/">优异车品</a></p>	
 				</div>
 			</div>
 

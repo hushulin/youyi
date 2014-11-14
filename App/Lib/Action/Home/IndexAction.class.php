@@ -106,7 +106,7 @@ class IndexAction extends EmptyAction
 			}
 		}else{
 			$this->assign('field_cate_id',$Article->field_cate_id);
-			$this->display();
+			die('非法访问');
 		}
 	}
 
