@@ -43,5 +43,8 @@ return array(
 
 	// 'ADV_LIST_URL_4' => '/Index/lists',
 	// 'ADV_LIST_4' => '(1,1,1)',
+
+	// 是否需要登录
+	'NEED_LOGIN' => false,
 );
 ?>

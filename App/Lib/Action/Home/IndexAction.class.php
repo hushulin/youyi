@@ -48,13 +48,69 @@ class IndexAction extends EmptyAction
 		$this->display();
 	}
 
-	// 用户前台发起
+	// 用户前台发起 晒单 经验
 	public function publish()
 	{
-		$this->display();
+		$Tipslist = D("Tipslist"); // 实例化Tipslist对象
+		if (IS_POST) {
+			if (session('verify') == md5(I('post.verify'))) {
+				$uid = session('uid');
+				if (empty($uid) && C('NEED_LOGIN')) {
+					$this->error('未登录');
+				}else {
+					
+					if (!$Tipslist->create()){
+						// 如果创建失败 表示验证没有通过 输出错误提示信息
+						$this->error($Tipslist->getError());
+					}else{
+						$Tipslist->is_effect = 0;
+						$Tipslist->time = NOW_TIME;
+						$Tipslist->user_id = $uid?$uid:0;
+						// 验证通过 可以进行其他数据操作
+						$re = $Tipslist->addTipslist();
+						if ($re !== false) {
+							$this->success('发布成功，等待管理员审核！');
+						} else {
+							$this->error($Tipslist->getError());
+						}
+					}
+				}
+			}else {
+				$this->error('验证码错误');
+			}
+		}else {
+			$Article = D('Article');
+			$this->assign('field_cargoods_id',$Tipslist->field_cargoods_id);
+			$this->assign('field_cate_id',$Article->field_cate_id);
+			$this->display();
+		}
+		
 	}
 
-	// 列表页
+	// 用户前台发起 文章
+	public function articleadd(){
+		$Article = D("Article"); // 实例化Article对象
+		if(IS_POST){
+			if (!$Article->create()){
+				// 如果创建失败 表示验证没有通过 输出错误提示信息
+				$this->error($Article->getError());
+			}else{
+				// 验证通过 可以进行其他数据操作
+				$re = $Article->addArticle();
+				if ($re !== false) {
+
+					$this->success('文章发布成功，等待管理员审核！');
+				} else {
+					$this->error($Article->getError());
+				}
+			}
+		}else{
+			$this->assign('field_cate_id',$Article->field_cate_id);
+			$this->display();
+		}
+	}
+
+	// 列表页 车品
 	public function lists()
 	{
 		$type_id = I('get.type_id');
@@ -97,6 +153,36 @@ class IndexAction extends EmptyAction
 		$cc = D('Type')->select();
 		$this->assign('cc',$cc);
 		$this->display();
+	}
+
+	public function userList()
+	{
+		$position_id = I('get.position_id');
+		// 推荐位
+		if ($position_id) {
+			$where['position_id'] = $position_id;
+		}
+		$where['is_effect'] = 1;
+		// 推荐列表
+		$list = D('Tipslist')->join("app_cargoods on app_tipslist.cargoods_id = app_cargoods.id")->where($where)->select();
+		// var_dump($list);
+		foreach ($list as $key => $value) {
+			$list[$key]['type_name'] = D('Type')->getFieldById($value['type_id'],'name');
+			$list[$key]['good_number'] = D('Worth')->where("`goods_id` = {$value['id']}")->count();
+			$list[$key]['comment_number'] = D('Comment')->where("`goods_id` = {$value['id']}")->count();
+			$list[$key]['collection_number'] = D('Collection')->where("`goods_id` = {$value['id']}")->count();
+
+			$list[$key]['comment_list'] = D('Comment')->where("`goods_id` = {$value['id']}")->select();
+		}
+		$this->assign('list',$list);// 赋值数据集
+		$this->assign('cate_name',D('Cargoodscate')->where("`id` = {$cate_id}")->getField('title'));
+		// 车品分类
+		$cate = D('Cargoodscate')->order("`sort` desc")->limit(8)->select();
+		$this->assign('cate',$cate);
+		// TYPE
+		$cc = D('Type')->select();
+		$this->assign('cc',$cc);
+		$this->display('lists');
 	}
 
 	// 详细

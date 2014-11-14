@@ -5,6 +5,7 @@
 <title><?php echo (($head_title)?($head_title):"优异车品"); ?>-<?php echo ($article["title"]); ?></title>
 <link href="__PUBLIC__/css/ycp.css" rel="stylesheet" type="text/css" />
 <link href="__PUBLIC__/css/info.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
 </head>
 
 <body>
@@ -12,16 +13,16 @@
 <div class="top">
 	<div class="container">
     	<div class="top_container_left">
-        	北京<span><a href="<?php echo C('UEC_HOST');;?>/index.php?ctl=city">[更换地区]</a></span>
+        	长沙<!-- <span><a href="<?php echo C('UEC_HOST');;?>/index.php?ctl=city">[更换地区]</a></span> -->
         </div>
         <div class="top_container_right">
 			<ul class="top_right_ul">
-				<Li class="top_li_first">您好
-					<span><a href="#">[退出] </a></span>
-				</Li>
+				<li class="top_li_first">您好，欢迎光临优异车品！
+					<!-- <span><a href="#">[退出] </a></span> -->
+				</li>
 				<li><a href="#">个人中心</a></li>
-				<li><a href="#">车保宝</a></li>
-				<li><a href="#">消息</a></li>
+<!-- 				<li><a href="#">车保宝</a></li>
+				<li><a href="#">消息</a></li> -->
 			</ul>
         </div>
     </div>
@@ -33,15 +34,27 @@
 			<a href="/"><img src="__PUBLIC__/image/ycp_logo.png" width="196" height="52" /></a> 
 		</div>
 		<div class="logo_right">
-			<form action="<?php echo U('Index/lists');;?>" method="post">
-				<input style="border:0 none;height:26px;width:240px;color: rgb(187, 187, 187);" type="text" name="keyword" placeholder="请输入您要搜索的关键词">
-				<div class="logo_right_sousou">
-					<input type="submit" class="search_btn s_b_width" style="border:0 none;background-color:#666666;font-size:14px;color:white;padding-top:8px;cursor:pointer;" id="search_btn" value="搜 索">
-				</div>
-			</form>
+			<input style="border:0 none;height:26px;width:240px;color: rgb(187, 187, 187);" type="text" name="keyword" placeholder="请输入您要搜索的关键词">
+			<div class="logo_right_sousou">
+				<input type="submit" class="search_btn s_b_width" style="border:0 none;background-color:#666666;font-size:14px;color:white;padding-top:8px;cursor:pointer;" id="search_btn" value="搜 索">
+			</div>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	(function($){
+		$('.s_b_width').click(function(event) {
+			var keywords = $('input[name=keyword]').val();
+			if (keywords == '') {
+				alert('请输入您要搜索的关键词');
+				return false;
+				// throw new Error();
+			}
+			window.location.href = '<?php echo U("lists");;?>' + '?keywords=' + keywords;
+		});
+	})(jQuery);
+</script>
 <!--menu-->
 	<div class="container">
 		<div class="menu_content">
@@ -226,7 +239,7 @@
 				<div class="ycp_bottomn_seven">
 					<h1>400-818-6060</h1>  
 					<span>周一到周六：9：00-18-00</span>
-					<p><a href="<?php echo C('UEC_HOST');;?>/biz.php?ctl=join&act=step1">商户入驻</a></p>	
+					<p><a href="javascript:;">优异车品</a></p>	
 				</div>
 			</div>
 

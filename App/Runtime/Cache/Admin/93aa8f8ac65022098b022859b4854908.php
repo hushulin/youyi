@@ -37,7 +37,7 @@
 	<div class="g-header">
 	<div class="m-logo left">
 		<div style="text-align:center;line-height:60px;">
-			<img src="__PUBLIC__/image/ycp_logo.png?w=140&h=30" alt="">
+			<img src="__PUBLIC__/image/ycp_logo.png?w=140&h=30" alt="" style="position:relative;top:10px;">
 		</div>
 	</div>
 	<div class="m-topmenu left">

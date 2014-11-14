@@ -6,6 +6,9 @@
 <link href="__PUBLIC__/css/ycp.css" rel="stylesheet" type="text/css" />
 <link href="__PUBLIC__/css/info.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<link rel="stylesheet" href="/Static/kindeditor/default/default.css">
+	<script charset="utf-8" src="/Static/kindeditor/kindeditor-min.js"></script>
+	<script charset="utf-8" src="/Static/kindeditor/zh_CN.js"></script>
 </head>
 
 <body>
@@ -45,32 +48,195 @@
 			    <ul>
 			        <li class="z-crt"><a href="javascript:;">我要晒单</a></li>
 			        <li><a href="javascript:;">我要分享经验</a></li>
-			        <li><a href="javascript:;">我要爆料</a></li>
 			        <li><a href="javascript:;">我要发文章</a></li>
 			    </ul>
 			</div>
 
 			<!-- 表单 -->
-			<div class="m-slide m-slide-x" style="width:100%;height:800px;">
+			<div class="m-slide m-slide-x" style="width:100%;min-height:1000px;">
 			    <ol>
 			        <li class="z-crt">
-			        	<div style="width:100%;height:800px;background-color:#aaa;">
-			        		我要晒单
+			        	<div style="width:100%;min-height:800px;">
+			        		
+			        		<div class="m-form">
+			        		    <form name="" method="post">
+			        		        <fieldset>
+			        		            <div class="formitm">
+			        		                <label class="lab">购买链接：</label>
+			        		                <div class="ipt">
+			        		                    <input type="text" name="url" class="u-ipt" style="width:70%;"/>
+			        		                    <input type="hidden" name="position_id" value="7">
+
+			        		                </div>
+			        		            </div>
+			        		            <div class="formitm">
+											<label class="lab">车品名:</label>
+											<div class="ipt">
+												<select class="u-select" name="cargoods_id"><volist name = "field_cargoods_id" id = "vo">
+		<option value="{$key}" <?php if($key == "") echo "selected"; ?>>{$vo}</option>
+		</volist>
+		</select>
+												<p></p>
+											</div>
+										</div>
+			        		            <div class="formitm">
+			        		            	<label class="lab">晒单内容：</label>
+			        		            	<div class="ipt">
+			        		            		<textarea class="u-textarea" name="content"></textarea><script type="text/javascript">
+					var editor;
+					KindEditor.ready(function(K) {
+						editor = K.create('textarea[name="content"]', {
+							allowFileManager : false,
+							themesPath: K.basePath,
+							width: '98%',
+							height: '500px',
+							resizeType: 1,
+							pasteType : 2,
+							urlType : 'absolute',
+							//fileManagerJson : '/admin.php?m=Admin&c=Article&a=fileManagerJson',
+							uploadJson : '/Admin/Index/keupload'
+						});
+					});
+				</script>
+			        		            	</div>
+			        		            </div>
+			        		            <div class="formitm">
+			        		                <label class="lab">验证码：</label>
+			        		                <div class="ipt">
+			        		                    <input type="text" name="verify" class="u-ipt"/><img class="code-img" src="{:U('/Admin/Public/verify')}" alt="验证码"/><a href="javascript:window.location.reload();" class="f-ib">换一张</a>
+			        		                    <p class="tip"><input type="checkbox" checked="checked" id="agree"/><label for="agree">同意“服务条款”和“隐私权保护和个人信息利用政策”</label></p>
+			        		                </div>
+			        		            </div>
+			        		            <div class="formitm formitm-1"><button class="u-btn" type="submit">晒单</button></div>
+			        		        </fieldset>
+			        		    </form>
+			        		</div>
 			        	</div>
 			        </li>
 			        <li>
-			        	<div style="width:100%;height:800px;background-color:#eee;">
-			        		我要分享经验
+			        	<div style="width:100%;min-height:800px;">
+			        		<div class="m-form">
+			        		    <form name="" method="post">
+			        		        <fieldset>
+			        		            <div class="formitm">
+			        		                <label class="lab">购买链接：</label>
+			        		                <div class="ipt">
+			        		                    <input type="text" name="url" class="u-ipt" style="width:70%;"/>
+			        		                    <input type="hidden" name="position_id" value="8">
+
+			        		                </div>
+			        		            </div>
+			        		            <div class="formitm">
+											<label class="lab">车品名:</label>
+											<div class="ipt">
+												<select class="u-select" name="cargoods_id"><volist name = "field_cargoods_id" id = "vo">
+		<option value="{$key}" <?php if($key == "") echo "selected"; ?>>{$vo}</option>
+		</volist>
+		</select>
+												<p></p>
+											</div>
+										</div>
+			        		            <div class="formitm">
+			        		            	<label class="lab">经验：</label>
+			        		            	<div class="ipt">
+			        		            		<textarea class="u-textarea" name="content"></textarea><script type="text/javascript">
+					var editor;
+					KindEditor.ready(function(K) {
+						editor = K.create('textarea[name="content"]', {
+							allowFileManager : false,
+							themesPath: K.basePath,
+							width: '98%',
+							height: '500px',
+							resizeType: 1,
+							pasteType : 2,
+							urlType : 'absolute',
+							//fileManagerJson : '/admin.php?m=Admin&c=Article&a=fileManagerJson',
+							uploadJson : '/Admin/Index/keupload'
+						});
+					});
+				</script>
+			        		            	</div>
+			        		            </div>
+			        		            <div class="formitm">
+			        		                <label class="lab">验证码：</label>
+			        		                <div class="ipt">
+			        		                    <input type="text" name="verify" class="u-ipt"/><img class="code-img" src="{:U('/Admin/Public/verify')}" alt="验证码"/><a href="javascript:window.location.reload();" class="f-ib">换一张</a>
+			        		                    <p class="tip"><input type="checkbox" checked="checked" id="agree"/><label for="agree">同意“服务条款”和“隐私权保护和个人信息利用政策”</label></p>
+			        		                </div>
+			        		            </div>
+			        		            <div class="formitm formitm-1"><button class="u-btn" type="submit">分享经验</button></div>
+			        		        </fieldset>
+			        		    </form>
+			        		</div>
 			        	</div>
 			        </li>
 			        <li>
-			        	<div style="width:100%;height:800px;background-color:#242423;">
-			        		我要爆料
-			        	</div>
-			        </li>
-			        <li>
-			        	<div style="width:100%;height:800px;background-color:#777777;">
-			        		我要发文章
+			        	<div style="width:100%;min-height:1000px;">
+			        		<div class="m-form">
+				<form name="m-form" action="{:U('articleadd');}" method="post" enctype="multipart/form-data">
+					<fieldset>
+						<div class="tab tab_1">
+							<div class="formitm">
+									<label class="lab">标题:</label>
+									<div class="ipt">
+										<input type="text" class="u-ipt" name="title" style="width:80%;" value=""/>
+										<p></p>
+									</div>
+								</div>
+							<div class="formitm">
+									<label class="lab">简短标题:</label>
+									<div class="ipt">
+										<input type="text" class="u-ipt" name="sub_title" value=""/>
+										<p></p>
+									</div>
+								</div>
+							<div class="formitm">
+									<label class="lab">正文:</label>
+									<div class="ipt">
+										<textarea class="u-textarea" name="content"></textarea><script type="text/javascript">
+					var editor;
+					KindEditor.ready(function(K) {
+						editor = K.create('textarea[name="content"]', {
+							allowFileManager : false,
+							themesPath: K.basePath,
+							width: '100%',
+							height: '500px',
+							resizeType: 1,
+							pasteType : 2,
+							urlType : 'absolute',
+							//fileManagerJson : '/admin.php?m=Admin&c=Article&a=fileManagerJson',
+							uploadJson : '/Admin/Index/keupload'
+						});
+					});
+				</script>
+	
+										<p></p>
+									</div>
+								</div>
+							<div class="formitm">
+									<label class="lab">分类:</label>
+									<div class="ipt">
+										<select class="u-select" name="cate_id"><volist name = "field_cate_id" id = "vo">
+<option value="{$key}" <?php if($key == "") echo "selected"; ?>>{$vo}</option>
+</volist>
+</select>
+										<p></p>
+									</div>
+								</div>
+							<div class="formitm">
+									<label class="lab">作者:</label>
+									<div class="ipt">
+										<input type="text" class="u-ipt" name="author" value=""/>
+										<p></p>
+									</div>
+								</div>
+						</div>
+						<div class="formitm formitm-1">
+							<button class="u-btn" type="submit">发布</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
 			        	</div>
 			        </li>
 			    </ol>
