@@ -48,6 +48,22 @@ class IndexAction extends EmptyAction
 		$this->display();
 	}
 
+	public function worth()
+	{
+		if ($this->isAjax()) {
+			$ip = get_client_ip();
+			cookie('ip',$ip);
+			$is_worth = I('get.is_worth');
+			$id = I('get.id');
+			$model = D('Worth');
+			$data['is_worth'] = $is_worth;
+			$data['goods_id'] = $id;
+			$data['create_time'] = NOW_TIME;
+			$model -> add($data);
+			die('操作成功');
+		}
+	}
+
 	// 用户前台发起 晒单 经验
 	public function publish()
 	{

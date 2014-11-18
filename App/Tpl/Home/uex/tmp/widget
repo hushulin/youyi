@@ -1,0 +1,38 @@
+<!--你可能还喜欢-->					
+					<!-- <div class="also_like">
+						<h2>你可能还喜欢</h2>
+							<ul class="also_like_ul">
+								<li>
+									<div class="also_like_img">
+										<a href="#"><img src="__PUBLIC__/image/fgbn.png" width="217" height="131" /></a>
+									</div>
+									<p><a href="#">LAB SERIES 朗士美国官网海淘男士护肤品 </a><span>满100元包邮</span></p>
+								</li>
+								
+								<li>
+									<div class="also_like_img">
+										<a href="#"><img src="__PUBLIC__/image/fgbn.png" width="217" height="131" /></a>
+									</div>
+									<p><a href="#">LAB SERIES 朗士美国官网海淘男士护肤品 </a><span>满100元包邮</span></p>
+								</li>
+								
+								<li class="julnd">
+									<div class="also_like_img">
+										<a href="#"><img src="__PUBLIC__/image/fgbn.png" width="217" height="131" /></a>
+									</div>
+									<p><a href="#">LAB SERIES 朗士美国官网海淘男士护肤品 </a><span>满100元包邮</span></p>
+								</li>
+							</ul>
+						</div> -->
+
+
+
+
+<!-- <a href="#" class="bk2 dlk">{$goods.collection_number}</a>						 -->
+								<!-- <a href="#" class="bk3 dlk">{$goods.comment_number}</a>						 -->
+
+
+
+								<div style="text-align:center;">
+						<img src="{$goods.img}?w=500&h=300">
+					</div>
