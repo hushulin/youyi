@@ -58,8 +58,8 @@ return array(
 	),
 	//Github配置
 	'THINK_SDK_GITHUB' => array(
-		'APP_KEY'    => '7de8d68b965a76262678', //应用注册成功后分配的 APP ID
-		'APP_SECRET' => 'ffc7e6586e073874637464940dd38fba0e781829', //应用注册成功后分配的KEY
+		'APP_KEY'    => '8fb695615f590b72b1c0', //应用注册成功后分配的 APP ID
+		'APP_SECRET' => '579fa5aec425e195152f1abdd339571fce7c5adb', //应用注册成功后分配的KEY
 		'CALLBACK'   => URL_CALLBACK . 'github',
 	),
 	//Google配置
