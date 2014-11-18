@@ -46,5 +46,9 @@ return array(
 
 	// 是否需要登录
 	'NEED_LOGIN' => false,
+
+
+	// SNS 登录
+	
 );
 ?>
