@@ -11,7 +11,7 @@
 // config.php 2013-02-25
 
 //定义回调URL通用的URL
-define('URL_CALLBACK', 'http://youyi.card7.net/index.php?m=Login&a=callback&type=');
+define('URL_CALLBACK', 'http://115.29.108.94:8089/index.php?m=Login&a=callback&type=');
 
 return array(
 	//腾讯QQ登录配置
@@ -58,8 +58,8 @@ return array(
 	),
 	//Github配置
 	'THINK_SDK_GITHUB' => array(
-		'APP_KEY'    => 'a80f6cb23ee349a1ee86', //应用注册成功后分配的 APP ID
-		'APP_SECRET' => 'df5925d26496308a81cd8702db6587082dc9a14a', //应用注册成功后分配的KEY
+		'APP_KEY'    => '7de8d68b965a76262678', //应用注册成功后分配的 APP ID
+		'APP_SECRET' => 'ffc7e6586e073874637464940dd38fba0e781829', //应用注册成功后分配的KEY
 		'CALLBACK'   => URL_CALLBACK . 'github',
 	),
 	//Google配置
