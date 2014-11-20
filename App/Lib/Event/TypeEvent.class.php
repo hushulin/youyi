@@ -38,7 +38,7 @@ class TypeEvent{
 			$userInfo['type'] = 'TENCENT';
 			$userInfo['name'] = $data['data']['name'];
 			$userInfo['nick'] = $data['data']['nick'];
-			$userInfo['head'] = $data['data']['head'];
+			$userInfo['head'] = $data['data']['head'].'/50';//修复腾讯微博头像不显示bug
 			return $userInfo;
 		} else {
 			throw_exception("获取腾讯微博用户信息失败：{$data['msg']}");
