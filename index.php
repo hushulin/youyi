@@ -8,5 +8,3 @@ define('APP_DEBUG', true);
 //加载框架入文件
 // 加载框架入口文件
 require( "./../../Core/Core31/Core.php");
-
-//
