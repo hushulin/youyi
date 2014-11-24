@@ -6,6 +6,16 @@
 <link href="__PUBLIC__/css/ycp.css" rel="stylesheet" type="text/css" />
 <link href="__PUBLIC__/css/info.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<style type="text/css">
+	.txtUpsideDown 
+	{
+	    filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=2);  /* IE6,IE7 */
+	    ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)"; /* IE8 */
+	    -moz-transform: rotate(-180deg);  /* FF3.5+ */
+	    -o-transform: rotate(-180deg);  /* Opera 10.5 */
+	    -webkit-transform: rotate(-180deg);  /* Safari 3.1+, Chrome */
+	}
+</style>
 </head>
 
 <body>
@@ -17,7 +27,7 @@
 					<div class="menu_cpfl_title czdq">{$cate_name|default='所有分类'}</div>
 					<ul class="top_right_ul menu_title_ul czdq_783">
 						<volist name="nav" id="vo">
-							<li><a href="{$vo.url}">{$vo.name}</a></li>
+							<li><a href="{$vo.url}"  class="dbg_title">{$vo.name}</a></li>
 						</volist>
 					</ul>
 				</div>
@@ -26,7 +36,7 @@
 					
 					<div class="menu_bottom_right">
 						{:W('Article',array('count'=>4));}
-						<div class="fact"><h3><a href="{:U('publish');}">我要爆料</a></h3></div>
+						<div class="fact"><h3><a href="{:U('publish');}"  class="dbg_button">我要爆料</a></h3></div>
 					</div>
 				</div>
 			</div>
@@ -67,7 +77,7 @@
 					<li>
 					<div class="Favourable_activity_title">
 						<span class="Stick2">置顶</span>
-						<a href="{:U('detail',array('id'=>$vo['id']));}"><h2>{$vo.title}</h2></a>
+						<a href="{:U('detail',array('id'=>$vo['id']));}"><p class="dbg_title">{$vo.title}</p></a>
 					</div>
 					<div class="watch_image"><a href="{:U('detail',array('id'=>$vo['id']));}"><img src="{$vo.img}?w=190&h=205" border="0" /></a></div>
 					<div class="Favourable_activity_contet">
@@ -87,7 +97,7 @@
 						</div>
 						<div class="activity_contet_tb"> 
 							<a href="#" class="bk1">值{$vo.good_number} </a> 
-							<a href="#" class="bk1">不值 <?php echo number_format($vo['good_number']/5,0); ?> </a> 
+							<a href="#" class="bk1 txtUpsideDown">不值 <?php echo number_format($vo['good_number']/5,0); ?> </a> 
 							<a href="#" class="bk2">{$vo.collection_number} </a>						
 							<a href="#" class="bk3">{$vo.comment_number}</a>						
 							<a href="{$vo.out}" class="bk4">{$vo.urlstring}</a> 

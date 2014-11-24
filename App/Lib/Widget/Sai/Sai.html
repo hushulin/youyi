@@ -1,7 +1,7 @@
 <!--晒心得-->
 <div class="tips">
 	<div class="container_Listweek_title">
-		<h1>他们的晒物心得</h1><span class="hyh_style"> <a href="#">换一换</a></span>	
+		<p class="dbg_title">他们在晒单</p>
 	</div>
 	<div class="tips_content">
 		<ul class="tips_content_ul">
@@ -10,7 +10,7 @@
 					<img src="{$vo.img}?h=77&w=77" />
 					<div class="tips_hight">
 						<p><a href="{:U('detail',array('id'=>$vo['goods_id']));}">{$vo.content|dsubstr=40}</a></p>
-						<span>赞44&nbsp;&nbsp;&nbsp;&nbsp;品论57</span>
+						<span>赞<php>echo rand(10,100);</php>&nbsp;&nbsp;&nbsp;&nbsp;品论<php>echo rand(10,100);</php></span>
 					</div>
 				</li>
 			</volist>

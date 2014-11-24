@@ -96,7 +96,7 @@ li.top_li_first{
 	}
 .menu_content_left{
 	width: 210px;
-	height: 227px;
+	height: 230px;
 	background-color: #333333;
 	float: left;
 	}
@@ -159,7 +159,7 @@ li.top_li_first{
 	float: left;
 	margin: 0 15px;
 	line-height: 25px;
-	max-width: 48px;
+	max-width: 58px;
 	overflow: hidden;
 	height: 25px;
       }	
@@ -1336,3 +1336,36 @@ button.u-btn-sm{*height:24px;_line-height:19px;}
 .u-select{width:292px;padding:5px;border:1px solid #D9D9D9;border-top-color:#c0c0c0;line-height:17px;font-size:14px;color:#777;background:#fff;}
 .u-textarea{width:280px;height:100px;padding:5px;border:1px solid #D9D9D9;border-top-color:#c0c0c0;line-height:17px;font-size:14px;color:#777;background:#fff;}
 .u-file{width:280px;padding:5px;height:22px;border:1px solid #D9D9D9;border-top-color:#c0c0c0;line-height:17px;font-size:14px;color:#777;background:#fff;}
+
+/*修复*/
+.dbg_title{
+	font-size: 20px;
+	font-family: 'Microsoft YaHei';
+	color: #333;
+	font-weight: 700;
+}
+.dbg_font{
+	font-size: 14px;
+	font-family: 'Venada';
+	color: #fff;
+}
+.dbg_button{
+	font-size: 16px;
+	font-family: 'Microsoft YaHei';
+	color: white;
+	font-weight: normal;
+}
+.txtUpsideDown{
+	filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=2);  /* IE6,IE7 */
+	    ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)"; /* IE8 */
+	    -moz-transform: rotate(-180deg);  /* FF3.5+ */
+	    -o-transform: rotate(-180deg);  /* Opera 10.5 */
+	    -webkit-transform: rotate(-180deg);  /* Safari 3.1+, Chrome */
+}
+
+.dbg_title2{
+	font-size: 32px;
+	font-family: 'Microsoft YaHei';
+	color: #333;
+	font-weight: 700;
+}

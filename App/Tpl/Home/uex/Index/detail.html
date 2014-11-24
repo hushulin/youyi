@@ -28,7 +28,7 @@
 					<div class="menu_cpfl_title czdq">车品世界</div>
 					<ul class="top_right_ul menu_title_ul czdq_783">
 						<volist name="nav" id="vo">
-							<li><a href="{$vo.url}">{$vo.name}</a></li>
+							<li><a href="{$vo.url}"  class="dbg_title">{$vo.name}</a></li>
 						</volist>
 					</ul>
 				</div>
@@ -51,7 +51,7 @@
 			<!--文章详情-->			
 			<div class="article_details">
 				<div class="article_details_title">
-					<a href="{$goods.out}"><h1>{$goods.title}</h1></a>
+					<a href="{$goods.out}"><p class="dbg_title">{$goods.title}</p></a>
 					<p class="article_details__auth">推荐人：{$goods.tuijian_user}    分类： {$goods.tag}		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$goods.out}" style="color:red">{$goods.urlstring|default="网路"}有售</a></p>
 				</div>
 				
@@ -60,16 +60,16 @@
 					<div style="padding:20px;">
 						<div style="float:right;width:300px;height:auto;padding:8px;text-align:center;">
 							<img src="{$goods.img}?w=300&h=250">
-							<a href="{$goods.out}" style="display:block;padding:10px 0;"><img src="__PUBLIC__/image/actto.png"></a>
+							<a href="{$goods.out}" style="display:block;padding:10px 0;" id="actto"><img src="__PUBLIC__/image/actto.png"></a>
 							<div style="color:#F04848;">{$goods.urlstring|default="网路"}</div>
 						</div>
 						{$goods.content}
 					</div>
 					
 					<div class="contrast">
-						<a href="javascript:worth(1);"><div class="zhi_red">值</div></a>
+						<a href="javascript:worth(1);"><div class="zhi_red dbg_title2">值</div></a>
 						<div class="time">{$goods.good_number}:{$goods.good_numbers|default=0}</div>
-						<a href="javascript:worth(0);"><div class="zhi_black txtUpsideDown">值</div></a>
+						<a href="javascript:worth(0);"><div class="zhi_black txtUpsideDown dbg_title2">值</div></a>
 					</div>
 					<div class="previous_posts">
 						<div class="previous_posts_left">
@@ -104,7 +104,7 @@
 <!--公告  入门-->
 				<div class="menu_bottom_right pat20">
 					<include file="Public:article" />
-					<div class="fact"><h3><a href="{:U('publish');}">我要爆料</a></h3></div>
+					<div class="fact"><h3><a href="{:U('publish');}"  class="dbg_button">我要爆料</a></h3></div>
 				</div>			
 	
 <!--右边banner-->
@@ -133,6 +133,13 @@
 			alert('您已经操作过，不需重复操作');
 		}
 	}
+	(function(actto){
+		actto.hover(function() {
+			actto.find('img').attr('src', '__PUBLIC__/image/acc.png');
+		}, function() {
+			actto.find('img').attr('src', '__PUBLIC__/image/actto.png');
+		});
+	})($('#actto'));
 	</script>
 </body>
 </html>

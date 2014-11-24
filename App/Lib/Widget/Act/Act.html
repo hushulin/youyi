@@ -2,7 +2,7 @@
 <div class="activeing" style="padding-bottom:30px;">
 	<div class="container_right_Listweek">
 		<div class="container_Listweek_title">
-			<h1>活动&正在发生的...</h1>
+			<p class="dbg_title">活动&正在发生的...</p>
 		</div>
 		<div class="container_activeing_content">
 				<div class="Product_content_left activeing_width216">
@@ -10,7 +10,7 @@
 					<div class="activity_mid margin0">
 						<ul>
 						<volist name="list" id="vo">
-							<li><a href="{:U('detail',array('id'=>$vo['id']));}">{$key+1}. {$vo.title}</a> </li>
+							<li style="overflow:hidden;"><a  style="overflow:hidden;" href="{:U('detail',array('id'=>$vo['id']));}">{$key+1}. {$vo.title|dsubstr=34}</a> </li>
 						</volist>
 						</ul>
 			</div>
