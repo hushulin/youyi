@@ -100,11 +100,14 @@ class LoginAction extends EmptyAction
 		if(is_array($token)){
 			$user_info = A('Type', 'Event')->$type($token);
 
-			echo("<h1>恭喜！使用 {$type} 用户登录成功</h1><br>");
-			echo("授权信息为：<br>");
-			dump($token);
-			echo("当前登录用户信息为：<br>");
-			dump($user_info);
+			$User = D('User');
+			$data['user_name'] = $user_info['nick'];
+			$data['password'] = 123456;
+			$data['face'] = $user_info['head'];
+			$re = $User->add($data);
+			session('uid',$re);
+			session('UserInfo',$data);
+			$this->success('登录成功',U('/'));
 		}
 	}
 }
