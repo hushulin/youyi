@@ -11,7 +11,7 @@
 // config.php 2013-02-25
 
 //定义回调URL通用的URL
-define('URL_CALLBACK', 'http://115.29.108.94:8089/index.php?m=Login&a=callback&type=');
+define('URL_CALLBACK', $_SERVER['HTTP_HOST'].'/index.php?m=Login&a=callback&type=');
 
 return array(
 	//腾讯QQ登录配置

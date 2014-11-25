@@ -42,12 +42,28 @@
 					<!-- 首页大广告结束 -->
 					<div class="menu_bottom_right">
 						<div class="menu_zc_top">
-							<div class="menu_zc_img" style="height:40px;"><img src="__PUBLIC__/image/zc_tx.png?h=50&w=50" style="width:50px;height:50px;"/><span style="height:50px;margin-top:0">嘿，欢迎光临优异车品，</br>
-                                          	<a href="javascript:;" id="nowlogin">马上登录</a>，开启轻松车生活把！</span></div>
+							<div class="menu_zc_img" style="height:40px;">
+								<?php if (session('uid')): ?>
+									<img src="{$Think.SESSION.UserInfo.face|default='__PUBLIC__/image/zc_tx.png?h=50&w=50'}" style="width:50px;height:50px;"/>
+								<?php else: ?>
+									<img src="__PUBLIC__/image/zc_tx.png?h=50&w=50" style="width:50px;height:50px;"/>
+								<?php endif; ?>
+								<span style="height:50px;margin-top:0">嘿，欢迎光临优异车品，</br>
+								<?php if (session('uid')): ?>
+									{$Think.SESSION.UserInfo.user_name}
+								<?php else: ?>
+									<a href="javascript:;" id="nowlogin">马上登录</a>
+								<?php endif; ?>，开启轻松车生活！</span></div>
 							<div class="menu_zclb_cotent">
 								<ul>
-								<li style="margin-left:0"><a href="{:C('UEC_HOST');}/index.php?ctl=user&act=register" class="dbg_button">注册</a></li>
-								<li class="jfth_bc"><a href="{:C('UEC_HOST');}/index.php?ctl=uc_money" class="dbg_button">积分兑换</a></li>
+								<li style="margin-left:0">
+									<?php if (session('uid') != 0 || session('uid') != ''): ?>
+										<a href="{:U('Login/logout');}" class="dbg_button">退出</a>
+									<?php else: ?>
+										<a href="{:U('Login/register');}" class="dbg_button">注册</a>
+									<?php endif ?>
+									</li>
+								<li class="jfth_bc"><a href="javascript:;" class="dbg_button">积分兑换</a></li>
 								</ul>
 							</div>
 						</div>
@@ -68,7 +84,7 @@
 		    <div class="lyct">
 
 		    	<div class="m-form">
-		    	    <form name="" action="" method="post">
+		    	    <form name="" action="{:U('Login/login2');}" method="post">
 		    	        <fieldset>
 		    	            <div class="formitm">
 		    	                <label class="lab">账号：</label>
@@ -82,7 +98,7 @@
 		    	                    <input type="password" name="password" class="u-ipt"/>
 		    	                </div>
 		    	            </div>
-		    	            <div class="formitm formitm-1"><button class="u-btn" type="button">立即登录</button></div>
+		    	            <div class="formitm formitm-1"><button class="u-btn" type="submit">立即登录</button></div>
 		    	        </fieldset>
 		    	    </form>
 		    	</div>

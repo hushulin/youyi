@@ -22,6 +22,61 @@ class LoginAction extends EmptyAction
 		redirect($sns->getRequestCodeURL());
 	}
 
+	public function login2()
+	{
+		if (IS_POST) {
+			empty($_POST['username']) && $this->error('用户名不能为空');
+			empty($_POST['password']) && $this->error('密码不能为空');
+
+			$User = D("User"); // 实例化User对象
+			$where['user_name'] = $_POST['username'];
+			$where['password'] = $_POST['password'];
+			$UserInfo = $User->where($where)->find();
+			if ($UserInfo) {
+				session('uid',$UserInfo['id']);
+				session('UserInfo',$UserInfo);
+				$this->success('登录成功',U('/'));
+			}else {
+				$this->error('账号密码错误');
+			}
+		}
+	}
+
+	public function logout()
+	{
+		session('uid',null);
+		session('UserInfo',null);
+		$this->success('登出成功');
+	}
+
+	// 注册地址
+	public function register()
+	{
+		$User = D("User"); // 实例化User对象
+		if (IS_POST) {
+			if ($_POST['password'] != $_POST['repassword']) {
+				$this->error('两次密码输入不一致');
+			}
+			$_POST['is_effect'] = 1;
+			if (!$User->create()){
+				// 如果创建失败 表示验证没有通过 输出错误提示信息
+				$this->error($User->getError());
+			}else{
+				// 验证通过 可以进行其他数据操作
+				$re = $User->addUser();
+				if ($re !== false) {
+					$this->success('注册成功！');
+				} else {
+					$this->error($User->getError());
+				}
+			}
+		}else {
+			$cate_name = "用户注册";
+			$this->assign('cate_name',$cate_name);
+			$this->display();
+		}
+	}
+
 	//授权回调地址
 	public function callback($type = null, $code = null){
 		(empty($type) || empty($code)) && $this->error('参数错误');
