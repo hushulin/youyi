@@ -22,8 +22,8 @@ return array(
 	),
 	//腾讯微博配置
 	'THINK_SDK_TENCENT' => array(
-		'APP_KEY'    => '', //应用注册成功后分配的 APP ID
-		'APP_SECRET' => '', //应用注册成功后分配的KEY
+		'APP_KEY'    => '801551914', //应用注册成功后分配的 APP ID
+		'APP_SECRET' => '7798f83570d7e002a13be44ba3a9430f', //应用注册成功后分配的KEY
 		'CALLBACK'   => URL_CALLBACK . 'tencent',
 	),
 	//新浪微博配置
