@@ -43,7 +43,7 @@
 					<div class="menu_bottom_right">
 						<div class="menu_zc_top">
 							<div class="menu_zc_img" style="height:40px;"><img src="__PUBLIC__/image/zc_tx.png?h=50&w=50" style="width:50px;height:50px;"/><span style="height:50px;margin-top:0">嘿，欢迎光临优异车品，</br>
-                                          	<a href="{:U('/Login');}">马上登录</a>，开启轻松车生活把！</span></div>
+                                          	<a href="javascript:;" id="nowlogin">马上登录</a>，开启轻松车生活把！</span></div>
 							<div class="menu_zclb_cotent">
 								<ul>
 								<li style="margin-left:0"><a href="{:C('UEC_HOST');}/index.php?ctl=user&act=register" class="dbg_button">注册</a></li>
@@ -57,6 +57,39 @@
 			</div>
 		</div>
 		
+	</div>
+
+
+	<div class="m-layer m-layer-show">
+	    <div class="lymask"></div>
+	    <table class="lytable"><tbody><tr><td class="lytd">
+	    <div class="lywrap">
+		    <div class="lytt"><h2 class="u-tt">欢迎登录</h2><span class="lyclose">×</span></div>
+		    <div class="lyct">
+
+		    	<div class="m-form">
+		    	    <form name="" action="" method="post">
+		    	        <fieldset>
+		    	            <div class="formitm">
+		    	                <label class="lab">账号：</label>
+		    	                <div class="ipt">
+		    	                    <input type="text" class="u-ipt" name="username"/>
+		    	                </div>
+		    	            </div>
+		    	            <div class="formitm">
+		    	                <label class="lab">密码：</label>
+		    	                <div class="ipt">
+		    	                    <input type="password" name="password" class="u-ipt"/>
+		    	                </div>
+		    	            </div>
+		    	            <div class="formitm formitm-1"><button class="u-btn" type="button">立即登录</button></div>
+		    	        </fieldset>
+		    	    </form>
+		    	</div>
+		    	<p style="padding:10px 0;border-bottom:1px solid #ddd;">您也可以采用以下方式登录</p>
+		        <p><a href="{:U('Login/login?type=qq')}"><img src="__PUBLIC__/image/qq.png"></a> <a href="{:U('Login/login?type=tencent')}"><img src="__PUBLIC__/image/tencent.png"></a> <a href="{:U('Login/login?type=sina')}"><img src="__PUBLIC__/image/sina.png"></a> <a href="{:U('Login/login?type=renren')}"><img src="__PUBLIC__/image/renren.png"></a> <a href="{:U('Login/login?type=douban')}"><img src="__PUBLIC__/image/douban.png"></a> <a href="{:U('Login/login?type=taobao')}"><img src="__PUBLIC__/image/taobao.png"></a></p>
+		    </div>
+	    </div></td></tr></tbody></table>
 	</div>
 	
 <!--可能你会感兴趣-->
@@ -276,6 +309,16 @@
 </div>
 
 <include file="Public:foot" />
-
+<script type="text/javascript">
+	(function(){
+		$('.m-layer').hide();
+		$('#nowlogin').click(function(event) {
+			$('.m-layer').show();
+		});
+		$('.lyclose').click(function(event) {
+			$('.m-layer').hide();
+		});
+	})();
+</script>
 </body>
 </html>
