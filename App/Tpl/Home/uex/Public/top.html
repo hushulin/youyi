@@ -1,3 +1,107 @@
+<script type="text/javascript" src="__PUBLIC__/nej/src/define.js?pro=./"></script>
+<style type="text/css">
+	.w-btn{padding:0 22px;height:31px;line-height:31px;color:#000;border:1px solid #b1b1b3;border-radius:2px;text-shadow:1px 1px #fff;/*background:-webkit-gradient(linear,0% 0%, 0% 100%, from(#fefefe), to(#f3f3f3));*/
+	background:-o-linear-gradient(top,#fefefe,#f3f3f3);
+	background:-moz-linear-gradient(top,#fefefe,#f3f3f3);
+	background:-webkit-linear-gradient(top,#fefefe,#f3f3f3);
+	box-shadow:inset 0 -1px #fff;}
+	.w-btn:hover{
+	background:-o-linear-gradient(left,#fff,#f5f5f5);
+	background:-moz-linear-gradient(left,#fff,#f5f5f5);
+	background:-webkit-linear-gradient(top,#fff,#f5f5f5);
+	}
+	.w-btn:active{
+	background:#f8f8f8;
+	box-shadow:inset 0 1px 1px #cccfd0;
+	}
+	.js-card{width:125px;border:1px solid #b1b1b3;}
+	.js-card .itm{line-height:34px;border-bottom:1px solid #e8e8e8;font-size:12px;padding-left:35px;width:90px}
+	body .js-card .itm:hover{background-color:#f7f7f7;}
+</style>
+<script type="text/javascript">
+	var f = function(){
+	var _  = NEJ.P,
+    	_e = _('nej.e'),
+    	_o = NEJ.P('nej.o'),
+    	_v = NEJ.P('nej.v'),
+    	_ui = NEJ.P('nej.ui'),
+    	_p = _('nej.demo'),
+    	_proCustCard,
+    	_supCustCard;
+	var _seed_css = _e._$pushCSSText('.#<uispace>{background:#fff;line-height:26px;width:80px;}\
+	        .#<uispace> .itm{color:#000;text-decoration:none;cursor:pointer;display:inline-block;*zoom:1;top:30px;}\
+			.#<uispace> .itm:hover{background-color:#ccc;text-decoration:none;}');
+	    // ui html code
+	    var _seed_html = _e._$addNodeTemplate('<div class="'+_seed_css+'">\
+	    		 									<a class="itm pnt" href="javascript:void(0)">我的主页</a>\
+	    											<a class="itm pnt" href="javascript:void(0)">我的收藏</a> \
+	    											<a class="itm pnt" href="javascript:void(0)">我的消息</a> \
+	    											<a class="itm pnt" href="javascript:void(0)">我的晒单</a>\
+	    											<a class="itm pnt" href="javascript:void(0)">我的经验</a> \
+	    											<a class="itm pnt" href="javascript:void(0)">我的爆料</a> \
+	    									   </div>');
+	
+	
+	_p._$$CustCard = NEJ.C();
+	_proCustCard = _p._$$CustCard._$extend(_ui._$$CardWrapper, !0);
+	_supCustCard = _p._$$CustCard.prototype;
+	
+	/**
+	 * 初始化外观信息
+	 * 
+	 * @return {Void}
+	 */
+	_proCustCard.__initXGui = function() {
+		this.__seed_css = _seed_css;
+		this.__seed_html = _seed_html;
+	};
+	/**
+	 * 控件重置
+	 * 
+	 * @param {Object}
+	 *            _options 可选配置参数 
+	 *            	itemclick	卡片点击回调
+	 * @return {Void}
+	 */
+	_proCustCard.__reset = function(_options) {
+		this.__supReset(_options);
+	};
+	/**
+	 * 初始化节点
+	 * 
+	 * @return {Void}
+	 */
+	_proCustCard.__initNode = function() {
+		this.__supInitNode();
+		_v._$addEvent(this.__body, 'click', this.__addCardItemClick._$bind(this));
+	};
+	/**
+	 * card点击回调
+	 */
+	_proCustCard.__addCardItemClick = function(_event){
+		var _elm = _v._$getElement(_event);
+		this._$dispatchEvent('itemclick',_elm.innerHTML);
+		this.__destroy();
+	};
+	
+	var _input = _e._$get('input');
+	_p._$$CustCard._$attach(_input,{parent:document.body,align:'bottom left',itemclick:onItemClick,destroyable:true,clazz:'js-card'});
+	
+	var _card;
+    //_v._$addEvent(_input,'click',onNewCardClick);
+    function onNewCardClick(_event){
+        _v._$stop(_event);
+        if(!!_card)_card._$recycle();
+        _card = _p._$$CustCard._$allocate({parent:_input.parentNode,itemclick:onItemClick,destroyable:true,clazz:'js-card'});
+    };
+    
+    
+    function onItemClick(_item){
+    	alert(_item+'正在开发中...');
+    };
+};
+define(['{lib}ui/layer/card.wrapper.js'], f);
+</script>
 <!--top-->
 <div class="top">
 	<div class="container">
@@ -7,11 +111,8 @@
         <div class="top_container_right">
 			<ul class="top_right_ul">
 				<li class="top_li_first">您好，欢迎光临优异车品！
-					<!-- <span><a href="#">[退出] </a></span> -->
 				</li>
-				<li><a href="#">个人中心</a></li>
-<!-- 				<li><a href="#">车保宝</a></li>
-				<li><a href="#">消息</a></li> -->
+				<li><a href="javascript:;" id="input">个人中心</a></li>
 			</ul>
         </div>
     </div>
