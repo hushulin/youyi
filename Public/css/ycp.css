@@ -1393,3 +1393,16 @@ button.u-btn-sm{*height:24px;_line-height:19px;}
 	color: #333;
 	font-weight: 700;
 }
+.cate_list{
+	position: absolute;
+	width: 210px;
+	height: 196px;
+	background-color: #333333;
+	color: white;
+	top:157px;
+	z-index: 999;
+	display: none;
+}
+.cate_list ul {
+	margin: 17px;
+}

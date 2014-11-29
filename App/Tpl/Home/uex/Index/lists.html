@@ -24,7 +24,14 @@
 		<div class="menu_content">
 			<div class="menu_content_right widthtz">
 				<div class="menu_title">
-					<div class="menu_cpfl_title czdq">{$cate_name|default='所有分类'}</div>
+					<div class="menu_cpfl_title czdq cate_list_event">{$cate_name|default='所有分类'}</div>
+					<div class="cate_list cate_list_event">
+						<ul class="menucpfl_lb_ul">
+							<volist name="cate" id="vo">
+								<li><a href="{:U('lists',array('cate_id'=>$vo['id']));}" style="display:inline-block;width:80px;" class="dbg_font">{$vo.title}</a></li>
+							</volist>
+						</ul>
+					</div>
 					<ul class="top_right_ul menu_title_ul czdq_783">
 						<volist name="nav" id="vo">
 							<li><a href="{$vo.url}"  class="dbg_title">{$vo.name}</a></li>
@@ -142,5 +149,14 @@
 
 </div>
 	<include file="Public:foot" />
+	<script type="text/javascript">
+	$(function() {
+		$('.cate_list_event').hover(function() {
+			$('.cate_list').show();
+		}, function() {
+			$('.cate_list').hide();
+		});
+	});
+	</script>
 </body>
 </html>
